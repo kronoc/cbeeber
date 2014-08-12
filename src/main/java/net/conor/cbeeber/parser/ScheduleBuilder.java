@@ -5,14 +5,14 @@ import android.util.Xml;
 import net.conor.cbeeber.Schedule;
 import net.conor.cbeeber.ScheduleItem;
 import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
 
-import java.io.InputStream;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class SchedulerFetcherParser {
+public class ScheduleBuilder {
     private Schedule schedule;
     private ScheduleItem item;
     private ArrayList<ScheduleItem> items;
@@ -29,11 +29,8 @@ public class SchedulerFetcherParser {
     private boolean flagOfPubDate = false;
     private String pubDate = "";
 */
-    public SchedulerFetcherParser(){
 
-    }
-
-    public Schedule parse(String url){
+    public Schedule build(String url){
         Reader reader = fetchSchedule(url);
         XmlPullParser xmlPullParser = buildParser(reader);
         Schedule schedule = contructSchedule(xmlPullParser);
@@ -42,33 +39,41 @@ public class SchedulerFetcherParser {
 
     private XmlPullParser buildParser(Reader reader){
         XmlPullParser xmlPullParser = Xml.newPullParser();
-        xmlPullParser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, Boolean.TRUE);
-        xmlPullParser.setInput(reader);
+        try {
+            xmlPullParser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, Boolean.TRUE);
+            xmlPullParser.setInput(reader);
+        } catch (XmlPullParserException e) {
+            Log.e("cbeeber", "Exception", e);
+        }
         return xmlPullParser;
     }
 
     private Reader fetchSchedule(String feedUrl){
-        URL url = null;
-        HttpURLConnection httpURLConnection = null;
-        InputStream inputStream = null;
-        url = new URL(feedUrl);
-        httpURLConnection = (HttpURLConnection)url.openConnection();
-        httpURLConnection.setReadTimeout(10*10000);
-        httpURLConnection.setConnectTimeout(20*1000);
-        httpURLConnection.setRequestMethod("GET");
-        httpURLConnection.setDoInput(true);
-        httpURLConnection.connect();
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
         StringBuffer buffer = new StringBuffer();
-        String line;
-        while ((line = reader.readLine()) != null) {
-            buffer.append(line);
+        try {
+            URL url = null;
+            HttpURLConnection httpURLConnection = null;
+            InputStream inputStream = null;
+            url = new URL(feedUrl);
+            httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setReadTimeout(10 * 10000);
+            httpURLConnection.setConnectTimeout(20 * 1000);
+            httpURLConnection.setRequestMethod("GET");
+            httpURLConnection.setDoInput(true);
+            httpURLConnection.connect();
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                buffer.append(line);
+            }
+
+            inputStream.close();
+            httpURLConnection.disconnect();
+        } catch (Exception e){
+            Log.e("cbeeber", "Exception", e);
         }
-
-        inputStream.close();
-        httpURLConnection.disconnect();
-
         return new StringReader(buffer.toString());
 
     }
