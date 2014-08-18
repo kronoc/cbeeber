@@ -2,7 +2,6 @@ package net.conor.cbeeber.parser;
 
 import android.util.Log;
 import android.util.Xml;
-import net.conor.cbeeber.Schedule;
 import net.conor.cbeeber.ScheduleItem;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -16,19 +15,7 @@ public class ScheduleBuilder {
     private Schedule schedule;
     private ScheduleItem item;
     private ArrayList<ScheduleItem> items;
-/*
-    private boolean flagOfLastBuildDate = false;
-    private String lastBuildDate = "";
-    private boolean flagOfItem = false;
-    private boolean flagOfTitle = false;
-    private String title = "";
-    private boolean flagOfDescription = false;
-    private String description = "";
-    private boolean flagOfGuid = false;
-    private String guid = "";
-    private boolean flagOfPubDate = false;
-    private String pubDate = "";
-*/
+
 
     public Schedule build(String url){
         Reader reader = fetchSchedule(url);
@@ -78,7 +65,7 @@ public class ScheduleBuilder {
 
     }
 
-    private Schedule contructSchedule(XmlPullParser xmlPullParser){
+        private Schedule contructSchedule(XmlPullParser xmlPullParser){
         return null;
     }
 /*
@@ -239,7 +226,7 @@ public class ScheduleBuilder {
         {
             this.flagOfTitle = true;
             this.item.setTitle(this.title);
-            this.item.setUid(String.valueOf(this.title.hashCode()));
+            this.item.setUid    (String.valueOf(this.title.hashCode()));
         }
 
         if(tagName.equals("description") && flagOfItem)
