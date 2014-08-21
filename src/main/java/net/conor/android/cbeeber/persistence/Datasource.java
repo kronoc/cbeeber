@@ -36,11 +36,11 @@ public class Datasource
     {
         ContentValues contentValues = new ContentValues();
         contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_UID, "foo");
-//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_TITLE, scheduleItem.getTitle());
-//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_DESCRIPTION, scheduleItem.getDescription());
-//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_GUID, scheduleItem.getGuid());
-//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_PUBDATE, scheduleItem.getPubDate());
-//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_THUMBNAIL, scheduleItem.getThumbnail());
+//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_TITLE, broadcast.getTitle());
+//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_DESCRIPTION, broadcast.getDescription());
+//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_GUID, broadcast.getGuid());
+//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_PUBDATE, broadcast.getPubDate());
+//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_THUMBNAIL, broadcast.getThumbnail());
         return this.sqLiteDatabase.insert(ApplicationSQLiteOpenHelper.TABLE_NAME, null, contentValues);
     }
 
@@ -66,14 +66,14 @@ public class Datasource
         ArrayList<Programme> arrayList = new ArrayList<Programme>();
         while(!cursor.isAfterLast())
         {
-            Programme ScheduleItem = new Programme();
-//            ScheduleItem.setUid(cursor.getString(0));
-//            ScheduleItem.setTitle(cursor.getString(1));
-//            ScheduleItem.setDescription(cursor.getString(2));
-//            ScheduleItem.setGuid(cursor.getString(3));
-//            ScheduleItem.setPubDate(cursor.getString(4));
-//            ScheduleItem.setThumbnail(cursor.getString(5));
-            arrayList.add(ScheduleItem);
+            Programme broadcast = new Programme();
+//            broadcast.setUid(cursor.getString(0));
+//            broadcast.setTitle(cursor.getString(1));
+//            broadcast.setDescription(cursor.getString(2));
+//            broadcast.setGuid(cursor.getString(3));
+//            broadcast.setPubDate(cursor.getString(4));
+//            broadcast.setThumbnail(cursor.getString(5));
+            arrayList.add(broadcast);
             cursor.moveToNext();
         }
         return arrayList;
@@ -81,7 +81,7 @@ public class Datasource
 
     private class ApplicationSQLiteOpenHelper extends SQLiteOpenHelper
     {
-        private static final String TABLE_NAME = "ScheduleItem";
+        private static final String TABLE_NAME = "broadcast";
         private static final String TABLE_COLUMN_ID = "ID";
         private static final String TABLE_COLUMN_UID = "UID";
         private static final String TABLE_COLUMN_TITLE = "TITLE";

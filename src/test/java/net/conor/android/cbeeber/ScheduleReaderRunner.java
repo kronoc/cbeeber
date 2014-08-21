@@ -13,10 +13,9 @@ import java.io.InputStreamReader;
  */
 public class ScheduleReaderRunner {
 
-    private static final boolean offline = true;
+    private static final boolean offline = false;
 
     public static void main(String[] args) throws Exception {
-
 
         ScheduleParser reader = new ScheduleParser();
         String feed;
