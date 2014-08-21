@@ -1,13 +1,14 @@
-package net.conor.cbeeber;
+package net.conor.android.cbeeber;
 
 
-        import android.content.ContentValues;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import net.conor.android.cbeeber.model.Programme;
 
 import java.util.ArrayList;
 
@@ -31,7 +32,7 @@ public class Datasource
         }
     }
 
-    public long insert(ScheduleItem scheduleItem)
+    public long insert(Programme programme)
     {
         ContentValues contentValues = new ContentValues();
         contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_UID, "foo");
@@ -43,7 +44,7 @@ public class Datasource
         return this.sqLiteDatabase.insert(ApplicationSQLiteOpenHelper.TABLE_NAME, null, contentValues);
     }
 
-    public ArrayList<ScheduleItem> selectAll()
+    public ArrayList<Programme> selectAll()
     {
         Cursor cursor = this.sqLiteDatabase.query(
                 ApplicationSQLiteOpenHelper.TABLE_NAME,
@@ -62,10 +63,10 @@ public class Datasource
                 null
         );
         cursor.moveToFirst();
-        ArrayList<ScheduleItem> arrayList = new ArrayList<ScheduleItem>();
+        ArrayList<Programme> arrayList = new ArrayList<Programme>();
         while(!cursor.isAfterLast())
         {
-            ScheduleItem ScheduleItem = new ScheduleItem();
+            Programme ScheduleItem = new Programme();
 //            ScheduleItem.setUid(cursor.getString(0));
 //            ScheduleItem.setTitle(cursor.getString(1));
 //            ScheduleItem.setDescription(cursor.getString(2));

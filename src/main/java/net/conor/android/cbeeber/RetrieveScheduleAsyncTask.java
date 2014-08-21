@@ -1,10 +1,11 @@
-package net.conor.cbeeber;
+package net.conor.android.cbeeber;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
-import net.conor.cbeeber.parser.Schedule;
-import net.conor.cbeeber.parser.ScheduleBuilder;
+import android.util.Log;
+import net.conor.android.cbeeber.model.Schedule;
+import net.conor.android.cbeeber.parser.ScheduleProvider;
 
 /**
 * Created by keegac01 on 02/07/2014.
@@ -22,16 +23,16 @@ public class RetrieveScheduleAsyncTask extends AsyncTask<String, Void, Schedule>
     @Override
     protected Schedule doInBackground(String... params)
     {
-        ScheduleBuilder scheduleBuilder = new ScheduleBuilder();
-//        try
-//        {
-//            Thread.sleep(1*1000);
-//        }
-//        catch(Exception exception)
-//        {
-//            Log.e("cbeeber", "Exception", exception);
-//        }
-        return scheduleBuilder.build(params[0]);
+        ScheduleProvider scheduleProvider = new ScheduleProvider();
+        try
+        {
+            Thread.sleep(1*1000);
+        }
+        catch(Exception exception)
+        {
+            Log.e("cbeeber", "Exception", exception);
+        }
+        return scheduleProvider.getSchedule();
     }
 
     @Override

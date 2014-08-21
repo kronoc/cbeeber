@@ -1,4 +1,4 @@
-package net.conor.cbeeber;
+package net.conor.android.cbeeber;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -40,7 +40,7 @@ public class SplashActivity extends Activity {
         else
         {
             RetrieveScheduleAsyncTask retrieveAsync = new RetrieveScheduleAsyncTask(this);
-            retrieveAsync.execute("http://bleb.org/tv/data/rss.php?ch=bbc4");
+            retrieveAsync.execute();
         }
     }
 

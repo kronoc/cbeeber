@@ -1,4 +1,4 @@
-package net.conor.cbeeber;
+package net.conor.android.cbeeber;
 
 import android.app.Activity;
 import android.os.Bundle;

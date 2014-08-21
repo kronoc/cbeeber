@@ -1,4 +1,4 @@
-package net.conor.cbeeber;
+package net.conor.android.cbeeber;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,10 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.example.cbeeber.R;
-import net.conor.cbeeber.parser.Schedule;
-
-import java.util.ArrayList;
+import net.conor.android.cbeeber.model.Schedule;
 
 public class ListViewBaseAdapter extends BaseAdapter
 {
@@ -33,7 +30,7 @@ public class ListViewBaseAdapter extends BaseAdapter
 	@Override
 	public Object getItem(int position)
 	{
-		return this.arrayList.get(position);
+		return this.schedule.getBroadcasts().get(position);
 	}
 
 	@Override
