@@ -1,4 +1,4 @@
-package net.conor.android.cbeeber;
+package net.conor.android.cbeeber.controller;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import net.conor.android.cbeeber.R;
 import net.conor.android.cbeeber.model.Schedule;
 
 public class ListViewBaseAdapter extends BaseAdapter

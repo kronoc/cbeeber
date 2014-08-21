@@ -1,9 +1,10 @@
-package net.conor.android.cbeeber;
+package net.conor.android.cbeeber.controller;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
+import net.conor.android.cbeeber.activity.CoreActivity;
 import net.conor.android.cbeeber.model.Schedule;
 import net.conor.android.cbeeber.parser.ScheduleProvider;
 

@@ -1,7 +1,8 @@
-package net.conor.android.cbeeber;
+package net.conor.android.cbeeber.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import net.conor.android.cbeeber.R;
 
 public class MyActivity extends Activity {
     /**

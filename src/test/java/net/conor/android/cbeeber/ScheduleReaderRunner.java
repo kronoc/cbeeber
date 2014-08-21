@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
  */
 public class ScheduleReaderRunner {
 
-    private static final boolean offline = false;
+    private static final boolean offline = true;
 
     public static void main(String[] args) throws Exception {
 
@@ -22,7 +22,7 @@ public class ScheduleReaderRunner {
         String feed;
         if (offline) {
 
-            InputStream inputStream = ScheduleReaderRunner.class.getResourceAsStream("schedules.xml");
+            InputStream inputStream = ScheduleReaderRunner.class.getResourceAsStream("../../../../schedules.xml");
 
             StringBuffer buffer = new StringBuffer();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

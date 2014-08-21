@@ -1,4 +1,4 @@
-package net.conor.android.cbeeber;
+package net.conor.android.cbeeber.persistence;
 
 
 import android.content.ContentValues;

@@ -1,4 +1,4 @@
-package net.conor.android.cbeeber;
+package net.conor.android.cbeeber.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import net.conor.android.cbeeber.controller.RetrieveScheduleAsyncTask;
 
 /**
  * Created by keegac01 on 02/07/2014.

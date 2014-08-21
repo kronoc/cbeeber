@@ -1,8 +1,10 @@
-package net.conor.android.cbeeber;
+package net.conor.android.cbeeber.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
+import net.conor.android.cbeeber.controller.ListViewBaseAdapter;
+import net.conor.android.cbeeber.R;
 import net.conor.android.cbeeber.model.Schedule;
 
 /**
@@ -10,7 +12,6 @@ import net.conor.android.cbeeber.model.Schedule;
  */
 public class CoreActivity extends Activity {
 
-    private final static String IMAGE_URL_TEMPLATE = "http://ichef.bbci.co.uk/images/ic/192x108/%s.jpg";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -19,7 +20,6 @@ public class CoreActivity extends Activity {
 
 
         if (this.getIntent().hasExtra("TV_SCHEDULE")) {
-
             Schedule schedule = (Schedule)this.getIntent().getSerializableExtra("TV_SCHEDULE");
             ListViewBaseAdapter listViewBaseAdapter = new ListViewBaseAdapter(this,schedule);
             ListView listView = (ListView) this.findViewById(R.id.activity_main_listview);
