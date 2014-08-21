@@ -45,12 +45,12 @@ public class ListViewBaseAdapter extends BaseAdapter
 		convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listview, null);
 		
 		RelativeLayout relativeLayout = (RelativeLayout)convertView.findViewById(R.id.layout_listview_relativelayout);
-		if(this.getCount()<=1)
-		{
-			relativeLayout.setBackgroundResource(R.drawable.shape_listview_element_onlyone);
-		}
-		else
-		{
+//		if(this.getCount()<=1)
+//		{
+//			relativeLayout.setBackgroundResource(R.drawable.shape_listview_element_onlyone);
+//		}
+//		else
+//		{
 			if(position==0)
 			{
 				relativeLayout.setBackgroundResource(R.drawable.shape_listview_element_first);
@@ -63,7 +63,7 @@ public class ListViewBaseAdapter extends BaseAdapter
 			{
 				relativeLayout.setBackgroundResource(R.drawable.shape_listview_element);
 			}
-		}
+//		}
 		
 		ImageView imageView = (ImageView)convertView.findViewById(R.id.layout_listview_imageview);
 		imageView.setLayoutParams(new RelativeLayout.LayoutParams(240, 135));
