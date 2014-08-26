@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import net.conor.android.cbeeber.activity.CoreActivity;
+import net.conor.android.cbeeber.model.Constants;
 import net.conor.android.cbeeber.model.Schedule;
 import net.conor.android.cbeeber.parser.ScheduleProvider;
 
@@ -40,7 +41,7 @@ public class RetrieveScheduleAsyncTask extends AsyncTask<String, Void, Schedule>
     protected void onPostExecute(Schedule schedule)
     {
         Intent intent = new Intent(callingActivity, CoreActivity.class);
-        intent.putExtra("TV_SCHEDULE", schedule);
+        intent.putExtra(Constants.SCHEDULE, schedule);
         callingActivity.startActivity(intent);
         callingActivity.finish();
     }

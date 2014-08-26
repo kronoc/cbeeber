@@ -68,14 +68,15 @@ public class ListViewBaseAdapter extends BaseAdapter
 		
 		ImageView imageView = (ImageView)convertView.findViewById(R.id.layout_listview_imageview);
 		imageView.setLayoutParams(new RelativeLayout.LayoutParams(240, 135));
-		//FillImageViewAsyncTask fillImageViewAsyncTask = new FillImageViewAsyncTask(this.context, this.arrayList.get(position).getThumbnail(), imageView, 240, 135);
-		//fillImageViewAsyncTask.execute();
+
+		BitmapViewAsyncTask bitmapViewAsyncTask = new BitmapViewAsyncTask(this.context, this.schedule.getBroadcasts().get(position).getImageUrl(), imageView, 240, 135);
+		bitmapViewAsyncTask.execute();
 		
 		TextView textViewTop = (TextView)convertView.findViewById(R.id.layout_listview_textview_top);
-		//textViewTop.setText(this.arrayList.get(position).getTitle());
+		textViewTop.setText(this.schedule.getBroadcasts().get(position).getTitle());
 		
 		TextView textViewBottom = (TextView)convertView.findViewById(R.id.layout_listview_textview_bottom);
-		//textViewBottom.setText(this.arrayList.get(position).getPubDate());
+		textViewBottom.setText(this.schedule.getBroadcasts().get(position).getStart().toString());
 		
 		return convertView;
 	}

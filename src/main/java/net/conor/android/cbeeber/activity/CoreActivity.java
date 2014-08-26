@@ -3,9 +3,9 @@ package net.conor.android.cbeeber.activity;
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
-import android.widget.TextView;
 import net.conor.android.cbeeber.R;
 import net.conor.android.cbeeber.controller.ListViewBaseAdapter;
+import net.conor.android.cbeeber.model.Constants;
 import net.conor.android.cbeeber.model.Schedule;
 
 /**
@@ -20,18 +20,24 @@ public class CoreActivity extends Activity {
         setContentView(R.layout.core);
 
 
-        if (this.getIntent().hasExtra("TV_SCHEDULE")) {
-            Schedule schedule = (Schedule)this.getIntent().getSerializableExtra("TV_SCHEDULE");
-
+        if (this.getIntent().hasExtra(Constants.SCHEDULE)) {
+            Schedule schedule = (Schedule)this.getIntent().getSerializableExtra(Constants.SCHEDULE);
+  /*
             TextView descriptionTextView = (TextView)this.findViewById(R.id.activity_main_textview_description);
+            if (descriptionTextView == null){
+                System.out.println("descriptionTextView is null");
+            }
             descriptionTextView.setPadding(10, 10, 10, 10);
 
-
+*/
             ListViewBaseAdapter listViewBaseAdapter = new ListViewBaseAdapter(this,schedule);
             ListView listView = (ListView) this.findViewById(R.id.activity_main_listview);
             listView.setAdapter(listViewBaseAdapter);
 
 
+
+        }
+        else{
 
         }
 
