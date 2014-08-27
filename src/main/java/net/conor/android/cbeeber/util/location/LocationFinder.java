@@ -13,15 +13,15 @@ import java.util.List;
  */
 public class LocationFinder {
 
-    private LocationManager locationManager;
     private final Geocoder geocoder;
+    private LocationManager locationManager;
 
     public LocationFinder(LocationManager locationManager, Geocoder geocoder) {
         this.locationManager = locationManager;
         this.geocoder = geocoder;
     }
 
-    public boolean isUK(){
+    public boolean isUK() {
         try {
             Location location = getLocation();
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
@@ -41,15 +41,15 @@ public class LocationFinder {
                 return null;
             } else {
                 if (locationManager
-                        .isProviderEnabled(LocationManager.GPS_PROVIDER) ) {
+                        .isProviderEnabled(LocationManager.GPS_PROVIDER)) {
                     return requestLocationForProvider(LocationManager.GPS_PROVIDER);
 
-                }else {
+                } else {
                     return requestLocationForProvider(LocationManager.NETWORK_PROVIDER);
                 }
             }
         } catch (Exception e) {
-           throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
     }
 

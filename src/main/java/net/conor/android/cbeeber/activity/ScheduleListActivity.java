@@ -23,20 +23,18 @@ public class ScheduleListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.core);
         if (this.getIntent().hasExtra(Constants.SCHEDULE)) {
-            Schedule schedule = (Schedule)this.getIntent().getSerializableExtra(Constants.SCHEDULE);
-            ScheduleViewBaseAdapter scheduleViewBaseAdapter = new ScheduleViewBaseAdapter(this,schedule);
+            Schedule schedule = (Schedule) this.getIntent().getSerializableExtra(Constants.SCHEDULE);
+            ScheduleViewBaseAdapter scheduleViewBaseAdapter = new ScheduleViewBaseAdapter(this, schedule);
             ListView listView = (ListView) this.findViewById(R.id.activity_main_listview);
             listView.setAdapter(scheduleViewBaseAdapter);
-        }else{
+        } else {
             new AlertDialog
                     .Builder(this, AlertDialog.THEME_HOLO_LIGHT)
                     .setTitle("Schedule Failure")
                     .setMessage("Sorry, we could not retrieve latest tv schedule.")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener()
-                            {
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
-                                public void onClick(DialogInterface dialog, int which)
-                                {
+                                public void onClick(DialogInterface dialog, int which) {
                                     ScheduleListActivity.this.finish();
                                 }
                             }
@@ -54,23 +52,22 @@ public class ScheduleListActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.main_menu_about:
-                InfoBox.showInfo(this,"CBeeber - The CBeebies Schedule App - © 2014 Conor Keegan");
+                InfoBox.showInfo(this, "CBeeber - The CBeebies Schedule App - © 2014 Conor Keegan");
                 break;
             case R.id.main_menu_reload:
-                InfoBox.showInfo(this,"Reloading today's schedule");
+                InfoBox.showInfo(this, "Reloading today's schedule");
                 RetrieveScheduleAsyncTask retrieveAsync = new RetrieveScheduleAsyncTask(this);
                 retrieveAsync.execute();
                 break;
             case R.id.main_menu_favourites:
-                InfoBox.showInfo(this,"favourite programmes");
+                InfoBox.showInfo(this, "favourite programmes");
                 break;
             case R.id.main_menu_help:
-                InfoBox.showInfo(this,"Help");
+                InfoBox.showInfo(this, "Help");
                 break;
         }
         return true;
     }
-
 
 
 }

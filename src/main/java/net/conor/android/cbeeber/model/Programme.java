@@ -11,7 +11,7 @@ import java.io.Serializable;
  * Created by keegac01 on 19/08/2014.
  */
 @Root(strict = false)
-public class Programme implements Serializable{
+public class Programme implements Serializable {
 
     private static final String PLACEHOLDER_IMAGE_URL = "http://ichef.bbci.co.uk/images/ic/192x108/?????.jpg";
     private static final String IMAGE_TEMPLATE = "http://ichef.bbci.co.uk/images/ic/192x108/%s.jpg";
@@ -43,9 +43,10 @@ public class Programme implements Serializable{
     private String firstBroadcast;
 
 
-    public String getImageUrl(){
+    public String getImageUrl() {
         return imagePid != null ? String.format(IMAGE_TEMPLATE, imagePid) : PLACEHOLDER_IMAGE_URL;
     }
+
     public Programme getParentProgramme() {
         return parentProgramme;
     }

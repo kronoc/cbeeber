@@ -31,7 +31,7 @@ public class WelcomeActivity extends Activity {
 
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         layoutParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-        layoutParams.setMargins(0, 0, 0, displayMetrics.heightPixels/8);
+        layoutParams.setMargins(0, 0, 0, displayMetrics.heightPixels / 8);
 
         ProgressBar progressBar = new ProgressBar(this);
         progressBar.setLayoutParams(layoutParams);
@@ -42,45 +42,38 @@ public class WelcomeActivity extends Activity {
 
         this.setContentView(relativeLayout);
 
-        ConnectivityManager connectivityManager = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivityManager = (ConnectivityManager) this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        boolean isInternetConnected = networkInfo!=null ? networkInfo.isConnected() : false;
-        if(!isInternetConnected)
-        {
+        boolean isInternetConnected = networkInfo != null ? networkInfo.isConnected() : false;
+        if (!isInternetConnected) {
             new AlertDialog
                     .Builder(this, AlertDialog.THEME_HOLO_LIGHT)
                     .setTitle("No Internet Connection")
                     .setMessage("This app needs an internet connection to retrieve latest schedule.")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener()
-                            {
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
-                                public void onClick(DialogInterface dialog, int which)
-                                {
+                                public void onClick(DialogInterface dialog, int which) {
                                     WelcomeActivity.this.finish();
                                 }
                             }
                     ).show();
-        }
-        else
-        {
-            InfoBox.showInfo(this,"Good News, you have an internet connection");
+        } else {
+            InfoBox.showInfo(this, "Good News, you have an internet connection");
 
             LocationFinder locationFinder = new LocationFinder((LocationManager) this.getSystemService(Context.LOCATION_SERVICE), new Geocoder(this));
-            if (locationFinder.isUK()){
-                InfoBox.showInfo(this,"You are in the UK - CBeebies Channel is available in your country.");
+            if (locationFinder.isUK()) {
+                InfoBox.showInfo(this, "You are in the UK - CBeebies Channel is available in your country.");
                 RetrieveScheduleAsyncTask retrieveAsync = new RetrieveScheduleAsyncTask(this);
                 retrieveAsync.execute();
-            }else{
+            } else {
                 new AlertDialog
                         .Builder(this, AlertDialog.THEME_HOLO_LIGHT)
                         .setTitle("Wrong Country")
                         .setMessage("Sorry, this app can only be used in the UK due to content rights restrictions.")
-                        .setPositiveButton("OK", new DialogInterface.OnClickListener()
-                                {
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
-                                    public void onClick(DialogInterface dialog, int which)
-                                    {
+                                    public void onClick(DialogInterface dialog, int which) {
                                         WelcomeActivity.this.finish();
                                     }
                                 }
@@ -88,7 +81,6 @@ public class WelcomeActivity extends Activity {
             }
         }
     }
-
 
 
 }

@@ -1,7 +1,7 @@
 package net.conor.android.cbeeber;
 
-import net.conor.android.cbeeber.util.fetcher.ScheduleFetcher;
 import net.conor.android.cbeeber.model.Schedule;
+import net.conor.android.cbeeber.util.fetcher.ScheduleFetcher;
 import net.conor.android.cbeeber.util.parser.ScheduleParser;
 
 import java.io.BufferedReader;

@@ -10,9 +10,8 @@ import java.util.Date;
 import java.util.List;
 
 @Root(strict = false)
-public class Schedule implements Serializable
-{
-	private static final long serialVersionUID = 1l;
+public class Schedule implements Serializable {
+    private static final long serialVersionUID = 1l;
     @Attribute(name = "key")
     @Path("service")
     private String serviceKey;

@@ -13,13 +13,13 @@ public class ScheduleProvider {
     private ScheduleFetcher fetcher = new ScheduleFetcher();
     private ScheduleParser parser = new ScheduleParser();
 
-    public Schedule getSchedule(){
+    public Schedule getSchedule() {
         String scheduleXML;
         try {
             scheduleXML = fetcher.fetch(SCHEDULE_URL);
-        }catch(RuntimeException e){
-           DummyScheduleFetcher dummyScheduleFetcher = new DummyScheduleFetcher();
-           scheduleXML = dummyScheduleFetcher.fetch("schedules.xml");
+        } catch (RuntimeException e) {
+            DummyScheduleFetcher dummyScheduleFetcher = new DummyScheduleFetcher();
+            scheduleXML = dummyScheduleFetcher.fetch("schedules.xml");
         }
 
         return parser.parse(scheduleXML);

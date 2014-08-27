@@ -10,10 +10,9 @@ import net.conor.android.cbeeber.model.Schedule;
 import net.conor.android.cbeeber.util.parser.ScheduleProvider;
 
 /**
-* Created by keegac01 on 02/07/2014.
-*/
-public class RetrieveScheduleAsyncTask extends AsyncTask<String, Void, Schedule>
-{
+ * Created by keegac01 on 02/07/2014.
+ */
+public class RetrieveScheduleAsyncTask extends AsyncTask<String, Void, Schedule> {
 
 
     private Activity callingActivity;
@@ -23,23 +22,18 @@ public class RetrieveScheduleAsyncTask extends AsyncTask<String, Void, Schedule>
     }
 
     @Override
-    protected Schedule doInBackground(String... params)
-    {
+    protected Schedule doInBackground(String... params) {
         ScheduleProvider scheduleProvider = new ScheduleProvider();
-        try
-        {
-            Thread.sleep(1*1000);
-        }
-        catch(Exception exception)
-        {
+        try {
+            Thread.sleep(1 * 1000);
+        } catch (Exception exception) {
             Log.e("cbeeber", "Exception", exception);
         }
         return scheduleProvider.getSchedule();
     }
 
     @Override
-    protected void onPostExecute(Schedule schedule)
-    {
+    protected void onPostExecute(Schedule schedule) {
         Intent intent = new Intent(callingActivity, ScheduleListActivity.class);
         intent.putExtra(Constants.SCHEDULE, schedule);
         callingActivity.startActivity(intent);

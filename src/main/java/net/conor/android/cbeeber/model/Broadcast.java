@@ -10,9 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Root(strict = false)
-public class Broadcast implements Serializable
-{
-	private static final long serialVersionUID = 1l;
+public class Broadcast implements Serializable {
+    private static final long serialVersionUID = 1l;
 
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
     private static final DateFormat timeFormat = new SimpleDateFormat("h:mm a");
@@ -29,7 +28,7 @@ public class Broadcast implements Serializable
     private Programme programme;
 
 
-    public String getImageUrl(){
+    public String getImageUrl() {
         return programme.getImageUrl();
     }
 
@@ -45,8 +44,13 @@ public class Broadcast implements Serializable
         return parse(start);
     }
 
-    public String getPrettyTime(){ return timeFormat.format(parse(start));}
+    public void setStart(Date start) {
+        this.start = format(start);
+    }
 
+    public String getPrettyTime() {
+        return timeFormat.format(parse(start));
+    }
 
     private Date parse(String date) {
         try {
@@ -54,10 +58,6 @@ public class Broadcast implements Serializable
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public void setStart(Date start) {
-        this.start = format(start);
     }
 
     private String format(Date date) {
@@ -82,9 +82,9 @@ public class Broadcast implements Serializable
 
     public String getTitle() {
         String parentTitle = tleo().getTitle();
-        if (!parentTitle.equals(programme.getTitle())){
-            return parentTitle+" : "+programme.getTitle();
-        }else{
+        if (!parentTitle.equals(programme.getTitle())) {
+            return parentTitle + " : " + programme.getTitle();
+        } else {
             return programme.getTitle();
         }
 
@@ -128,10 +128,10 @@ public class Broadcast implements Serializable
 
     private Programme tleo() {
         Programme programme = this.programme;
-        while (programme!=null){
-            if (programme.getParentProgramme()!=null) {
+        while (programme != null) {
+            if (programme.getParentProgramme() != null) {
                 programme = programme.getParentProgramme();
-            }else{
+            } else {
                 break;
             }
         }

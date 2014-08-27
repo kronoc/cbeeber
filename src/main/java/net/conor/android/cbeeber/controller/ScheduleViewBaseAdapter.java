@@ -11,73 +11,56 @@ import android.widget.TextView;
 import net.conor.android.cbeeber.R;
 import net.conor.android.cbeeber.model.Schedule;
 
-public class ScheduleViewBaseAdapter extends BaseAdapter
-{
+public class ScheduleViewBaseAdapter extends BaseAdapter {
     private final Schedule schedule;
     private Context context;
-	
-	public ScheduleViewBaseAdapter(Context context, Schedule schedule)
-	{
-		this.context = context;
-		this.schedule = schedule;
-	}
-	
-	@Override
-	public int getCount()
-	{
-		return schedule.size();
-	}
 
-	@Override
-	public Object getItem(int position)
-	{
-		return this.schedule.getBroadcasts().get(position);
-	}
+    public ScheduleViewBaseAdapter(Context context, Schedule schedule) {
+        this.context = context;
+        this.schedule = schedule;
+    }
 
-	@Override
-	public long getItemId(int position)
-	{
-		return (long)position;
-	}
+    @Override
+    public int getCount() {
+        return schedule.size();
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent)
-	{
-		convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listview, null);
-		
-		RelativeLayout relativeLayout = (RelativeLayout)convertView.findViewById(R.id.layout_listview_relativelayout);
-//		if(this.getCount()<=1)
-//		{
-//			relativeLayout.setBackgroundResource(R.drawable.shape_listview_element_onlyone);
-//		}
-//		else
-//		{
-			if(position==0)
-			{
-				relativeLayout.setBackgroundResource(R.drawable.shape_listview_element_first);
-			}
-			else if(position==this.getCount()-1)
-			{
-				relativeLayout.setBackgroundResource(R.drawable.shape_listview_element_last);
-			}
-			else
-			{
-				relativeLayout.setBackgroundResource(R.drawable.shape_listview_element);
-			}
-//		}
-		
-		ImageView imageView = (ImageView)convertView.findViewById(R.id.layout_listview_imageview);
-		imageView.setLayoutParams(new RelativeLayout.LayoutParams(240, 135));
+    @Override
+    public Object getItem(int position) {
+        return this.schedule.getBroadcasts().get(position);
+    }
 
-		BitmapViewAsyncTask bitmapViewAsyncTask = new BitmapViewAsyncTask(this.context, this.schedule.getBroadcasts().get(position).getImageUrl(), imageView, 240, 135);
-		bitmapViewAsyncTask.execute();
-		
-		TextView textViewTop = (TextView)convertView.findViewById(R.id.layout_listview_textview_top);
-		textViewTop.setText(this.schedule.getBroadcasts().get(position).getTitle());
-		
-		TextView textViewBottom = (TextView)convertView.findViewById(R.id.layout_listview_textview_bottom);
-		textViewBottom.setText(this.schedule.getBroadcasts().get(position).getPrettyTime());
-		
-		return convertView;
-	}
+    @Override
+    public long getItemId(int position) {
+        return (long) position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listview, null);
+
+        RelativeLayout relativeLayout = (RelativeLayout) convertView.findViewById(R.id.layout_listview_relativelayout);
+
+        if (position == 0) {
+            relativeLayout.setBackgroundResource(R.drawable.shape_listview_element_first);
+        } else if (position == this.getCount() - 1) {
+            relativeLayout.setBackgroundResource(R.drawable.shape_listview_element_last);
+        } else {
+            relativeLayout.setBackgroundResource(R.drawable.shape_listview_element);
+        }
+
+        ImageView imageView = (ImageView) convertView.findViewById(R.id.layout_listview_imageview);
+        imageView.setLayoutParams(new RelativeLayout.LayoutParams(240, 135));
+
+        BitmapViewAsyncTask bitmapViewAsyncTask = new BitmapViewAsyncTask(this.context, this.schedule.getBroadcasts().get(position).getImageUrl(), imageView, 240, 135);
+        bitmapViewAsyncTask.execute();
+
+        TextView textViewTop = (TextView) convertView.findViewById(R.id.layout_listview_textview_top);
+        textViewTop.setText(this.schedule.getBroadcasts().get(position).getTitle());
+
+        TextView textViewBottom = (TextView) convertView.findViewById(R.id.layout_listview_textview_bottom);
+        textViewBottom.setText(this.schedule.getBroadcasts().get(position).getPrettyTime());
+
+        return convertView;
+    }
 }
