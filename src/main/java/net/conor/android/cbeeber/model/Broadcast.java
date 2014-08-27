@@ -29,7 +29,7 @@ public class Broadcast implements Serializable {
 
 
     public String getImageUrl() {
-        return programme.getImageUrl();
+        return tleo().getImageUrl();
     }
 
     public String getPid() {

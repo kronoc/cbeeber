@@ -29,8 +29,7 @@ public class Datasource {
     public long insert(Programme programme) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_PID, programme.getPid());
-        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_TITLE, programme.getDisplayTitle());
-        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_SUBTITLE, programme.getDisplaySubtitle());
+        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_TITLE, programme.getTitle());
         contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_IMAGE_PID, programme.getImagePid());
         return this.sqLiteDatabase.insert(ApplicationSQLiteOpenHelper.TABLE_NAME, null, contentValues);
     }
@@ -41,7 +40,6 @@ public class Datasource {
                 new String[]{
                         ApplicationSQLiteOpenHelper.TABLE_COLUMN_PID,
                         ApplicationSQLiteOpenHelper.TABLE_COLUMN_TITLE,
-                        ApplicationSQLiteOpenHelper.TABLE_COLUMN_SUBTITLE,
                         ApplicationSQLiteOpenHelper.TABLE_COLUMN_IMAGE_PID
                 },
                 null,
@@ -56,8 +54,7 @@ public class Datasource {
             Programme programme = new Programme();
             programme.setPid(cursor.getString(0));
             programme.setDisplayTitle(cursor.getString(1));
-            programme.setDisplaySubtitle(cursor.getString(2));
-            programme.setImagePid(cursor.getString(3));
+            programme.setImagePid(cursor.getString(2));
             arrayList.add(programme);
             cursor.moveToNext();
         }
@@ -69,7 +66,6 @@ public class Datasource {
         private static final String TABLE_COLUMN_ID = "ID";
         private static final String TABLE_COLUMN_PID = "PID";
         private static final String TABLE_COLUMN_TITLE = "TITLE";
-        private static final String TABLE_COLUMN_SUBTITLE = "DESCRIPTION";
         private static final String TABLE_COLUMN_IMAGE_PID = "IMAGE_PID";
 
         public ApplicationSQLiteOpenHelper(Context context, String name, CursorFactory cursorFactory, int version) {
@@ -83,7 +79,6 @@ public class Datasource {
                             TABLE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                             TABLE_COLUMN_PID + " TEXT, " +
                             TABLE_COLUMN_TITLE + " TEXT, " +
-                            TABLE_COLUMN_SUBTITLE + " TEXT, " +
                             TABLE_COLUMN_IMAGE_PID + " TEXT " +
                             ")"
             );
