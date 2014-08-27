@@ -22,7 +22,6 @@ public class ScheduleReaderRunner {
         if (offline) {
 
             InputStream inputStream = ScheduleReaderRunner.class.getResourceAsStream("../../../../schedules.xml");
-
             StringBuffer buffer = new StringBuffer();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
@@ -34,7 +33,7 @@ public class ScheduleReaderRunner {
 
         } else {
             ScheduleFetcher fetcher = new ScheduleFetcher();
-            feed = fetcher.fetch("http://www.bbc.co.uk/cbeebies/programmes/schedules.xml");
+            feed = fetcher.fetch("http://www.bbc.co.uks/cbeebies/programmes/schedules.xml");
         }
         Schedule schedule = reader.parse(feed);
         System.out.println(schedule.toString());

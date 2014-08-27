@@ -1,6 +1,7 @@
 package net.conor.android.cbeeber.util.parser;
 
 import net.conor.android.cbeeber.model.Schedule;
+import net.conor.android.cbeeber.util.fetcher.DummyScheduleFetcher;
 import net.conor.android.cbeeber.util.fetcher.ScheduleFetcher;
 
 /**
@@ -13,7 +14,14 @@ public class ScheduleProvider {
     private ScheduleParser parser = new ScheduleParser();
 
     public Schedule getSchedule(){
-        String scheduleXML = fetcher.fetch(SCHEDULE_URL);
+        String scheduleXML;
+        try {
+            scheduleXML = fetcher.fetch(SCHEDULE_URL);
+        }catch(RuntimeException e){
+           DummyScheduleFetcher dummyScheduleFetcher = new DummyScheduleFetcher();
+           scheduleXML = dummyScheduleFetcher.fetch("schedules.xml");
+        }
+
         return parser.parse(scheduleXML);
     }
 
