@@ -33,10 +33,10 @@ public class Programme implements Serializable{
     @Element(name = "pid")
     @Path("image")
     private String imagePid;
-    @Element(name = "title")
+    @Element(name = "title", required = false)
     @Path("display_titles")
     private String displayTitle;
-    @Element(name = "subtitle")
+    @Element(name = "subtitle", required = false)
     @Path("display_titles")
     private String displaySubtitle;
     @Element(required = false)
