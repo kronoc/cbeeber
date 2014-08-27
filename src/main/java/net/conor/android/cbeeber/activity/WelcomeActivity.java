@@ -21,7 +21,7 @@ import net.conor.android.cbeeber.location.LocationFinder;
 /**
  * Created by keegac01 on 02/07/2014.
  */
-public class SplashActivity extends Activity {
+public class WelcomeActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +41,7 @@ public class SplashActivity extends Activity {
         relativeLayout.setBackgroundResource(R.drawable.splash);
         relativeLayout.addView(progressBar);
 
-
         this.setContentView(relativeLayout);
-
 
         ConnectivityManager connectivityManager = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -60,7 +58,7 @@ public class SplashActivity extends Activity {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which)
                                 {
-                                    SplashActivity.this.finish();
+                                    WelcomeActivity.this.finish();
                                 }
                             }
                     ).show();
@@ -84,13 +82,11 @@ public class SplashActivity extends Activity {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which)
                                     {
-                                        SplashActivity.this.finish();
+                                        WelcomeActivity.this.finish();
                                     }
                                 }
                         ).show();
             }
-
-
         }
     }
 

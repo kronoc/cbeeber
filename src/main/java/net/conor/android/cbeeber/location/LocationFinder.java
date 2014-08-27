@@ -13,8 +13,6 @@ import java.util.List;
  */
 public class LocationFinder {
 
-    //public static final int TIME_BETWEEN_UPDATES = 86400000;
-    //private static final int DISTANCE_CHANGE_FOR_UPDATES = 1000;
     private LocationManager locationManager;
     private final Geocoder geocoder;
 
@@ -28,7 +26,7 @@ public class LocationFinder {
             Location location = getLocation();
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
             Address address = addresses.get(0);
-            return (address.getCountryCode().equalsIgnoreCase("uk"));
+            return (address.getCountryCode().equalsIgnoreCase("gb"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -59,6 +57,5 @@ public class LocationFinder {
         return locationManager.getLastKnownLocation(provider);
 
     }
-
 
 }
