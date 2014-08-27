@@ -8,7 +8,7 @@ import android.widget.Toast;
  */
 public class InfoBox {
 
-    public final static void showInfo(Context context, CharSequence text) {
+    public final static void showInfo(final Context context, final CharSequence text) {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();

@@ -12,12 +12,12 @@ import net.conor.android.cbeeber.model.Programme;
 
 import java.util.ArrayList;
 
-public class Datasource {
+public class CBeeberDatasource {
     private static final String DATABASE_NAME = "cbeeber";
     private static final int DATABASE_VERSION = 1;
     private SQLiteDatabase sqLiteDatabase;
 
-    public Datasource(Context context) {
+    public CBeeberDatasource(Context context) {
         ApplicationSQLiteOpenHelper applicationSQLiteOpenHelper = new ApplicationSQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
         try {
             this.sqLiteDatabase = applicationSQLiteOpenHelper.getWritableDatabase();

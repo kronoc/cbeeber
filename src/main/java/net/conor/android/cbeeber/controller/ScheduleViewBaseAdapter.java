@@ -13,9 +13,9 @@ import net.conor.android.cbeeber.model.Schedule;
 
 public class ScheduleViewBaseAdapter extends BaseAdapter {
     private final Schedule schedule;
-    private Context context;
+    private final Context context;
 
-    public ScheduleViewBaseAdapter(Context context, Schedule schedule) {
+    public ScheduleViewBaseAdapter(final Context context, final Schedule schedule) {
         this.context = context;
         this.schedule = schedule;
     }

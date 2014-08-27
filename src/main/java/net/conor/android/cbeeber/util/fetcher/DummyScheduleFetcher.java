@@ -10,7 +10,7 @@ import java.io.InputStreamReader;
  */
 public class DummyScheduleFetcher extends ScheduleFetcher {
 
-    public String fetch(String feedUrl) {
+    public String fetch(final String feedUrl) {
         InputStream inputStream = DummyScheduleFetcher.class.getResourceAsStream(feedUrl);
         StringBuffer buffer = new StringBuffer();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

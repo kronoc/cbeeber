@@ -12,7 +12,7 @@ import java.net.URL;
  */
 public class ImageFetcher {
 
-    public Bitmap fetchImage(String imageURL, Bitmap fallbackImage, int width, int height) {
+    public Bitmap fetchImage(final String imageURL, final Bitmap fallbackImage, final int width, final int height) {
         Bitmap image = fallbackImage;
         try {
             if (imageURL != null && imageURL.length() > 1) {

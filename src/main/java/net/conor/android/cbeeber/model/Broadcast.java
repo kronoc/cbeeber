@@ -27,6 +27,9 @@ public class Broadcast implements Serializable {
     @Element
     private Programme programme;
 
+    public Programme getProgramme() {
+        return programme;
+    }
 
     public String getImageUrl() {
         return tleo().getImageUrl();
@@ -127,15 +130,7 @@ public class Broadcast implements Serializable {
     }
 
     private Programme tleo() {
-        Programme programme = this.programme;
-        while (programme != null) {
-            if (programme.getParentProgramme() != null) {
-                programme = programme.getParentProgramme();
-            } else {
-                break;
-            }
-        }
-        return programme;
+        return this.programme.tleo();
     }
 
     @Override

@@ -155,4 +155,20 @@ public class Programme implements Serializable {
                 ", firstBroadcast='" + firstBroadcast + '\'' +
                 '}';
     }
+
+    public String getIplayerLink() {
+        return "http://www.bbc.co.uk/iplayer/cbeebies/episode/"+pid;
+    }
+
+    public Programme tleo() {
+        Programme programme = this;
+        while (programme != null) {
+            if (programme.getParentProgramme() != null) {
+                programme = programme.getParentProgramme();
+            } else {
+                break;
+            }
+        }
+        return programme;
+    }
 }

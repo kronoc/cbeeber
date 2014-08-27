@@ -3,9 +3,12 @@ package net.conor.android.cbeeber.activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import net.conor.android.cbeeber.R;
 import net.conor.android.cbeeber.controller.RetrieveScheduleAsyncTask;
@@ -23,10 +26,23 @@ public class ScheduleListActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.core);
         if (this.getIntent().hasExtra(Constants.SCHEDULE)) {
-            Schedule schedule = (Schedule) this.getIntent().getSerializableExtra(Constants.SCHEDULE);
+            final Schedule schedule = (Schedule) this.getIntent().getSerializableExtra(Constants.SCHEDULE);
             ScheduleViewBaseAdapter scheduleViewBaseAdapter = new ScheduleViewBaseAdapter(this, schedule);
             ListView listView = (ListView) this.findViewById(R.id.activity_main_listview);
             listView.setAdapter(scheduleViewBaseAdapter);
+            listView.setOnItemClickListener(
+                    new AdapterView.OnItemClickListener()
+                    {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int positon, long id)
+                        {
+                            Intent intent = new Intent(ScheduleListActivity.this,ProgrammeActivity.class);
+                            intent.putExtra(Constants.PROGRAMME_ITEM, schedule.getBroadcasts().get(positon).getProgramme());
+                            ScheduleListActivity.this.startActivity(intent);
+                        }
+                    }
+            );
+
         } else {
             new AlertDialog
                     .Builder(this, AlertDialog.THEME_HOLO_LIGHT)

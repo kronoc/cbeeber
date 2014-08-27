@@ -16,7 +16,7 @@ public class LocationFinder {
     private final Geocoder geocoder;
     private LocationManager locationManager;
 
-    public LocationFinder(LocationManager locationManager, Geocoder geocoder) {
+    public LocationFinder(final LocationManager locationManager, final Geocoder geocoder) {
         this.locationManager = locationManager;
         this.geocoder = geocoder;
     }

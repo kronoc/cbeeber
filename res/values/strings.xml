@@ -6,4 +6,7 @@
     <string name="main_menu_favourites_title">Favourites</string>
     <string name="main_menu_help_title">Help</string>
     <string name="main_menu_about_title">About</string>
+    <string name="programme_detail">Programme Information</string>
+    <string name="programme_iplayer">Go to iPlayer page</string>
+    <string name="iplayer_cta">Click here to watch in CBeebies iPlayer:</string>
 </resources>

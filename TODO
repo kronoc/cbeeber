@@ -1,54 +1,10 @@
-UI design (Activity, Fragment, View components),
-
-Network Connections,
-
-ConnectivityManager connectivityManager = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-		boolean isInternetConnected = networkInfo!=null ? networkInfo.isConnectedOrConnecting() : false ;
-		if(!isInternetConnected)
-		{
-			new AlertDialog
-				.Builder(this, AlertDialog.THEME_HOLO_LIGHT)
-				.setTitle("No Internet Connection")
-				.setMessage("This app need Internet connection to retrieve latest BBC News.")
-				.setPositiveButton("OK", new DialogInterface.OnClickListener()
-				{
-					@Override
-					public void onClick(DialogInterface dialog, int which)
-					{
-						SplashActivity.this.finish();
-					}
-				}
-			).show();
-		}
-		else{
-
-Location Detection,
-
-check person is in UK or not}
-else
-		{do everything else}
-
-XML (or JSON) data parsing
-
-fetch xml schedule: http://www.bbc.co.uk/cbeebies/programmes/schedules.xml
-
-image urls: http://ichef.bbci.co.uk/images/ic/192x108/{image_pid}.jpg
-
-parse into objects (jaxB?)
-
 Database implementation,
 
-store schedule in database
 
 Gestures (including multi-touches),
 
-font size increase/decrease?
 
 Animation and Sensors;
-
-start screen cheebies logo, click on it - two logos choose today and tomorrow.
-move screen and cbeebies bug moves on screen.
 
 
 

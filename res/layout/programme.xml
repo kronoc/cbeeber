@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context="${packageName}.${activityClass}" >
+    
+
+    
+    <ImageButton android:id="@+id/activity_programme_imagebutton_favourite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_menu_star" />
+
+    <ImageButton android:id="@+id/activity_programme_imagebutton_iplayer"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:contentDescription="@string/programme_iplayer"
+                 android:background="@drawable/ic_menu_iplayer" />
+	
+	<ScrollView
+        android:id="@+id/activity_programme_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@id/activity_programme_imagebutton_favourite" >
+
+	    <LinearLayout
+            android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:orientation="vertical" >
+            <TextView
+                    android:id="@+id/activity_programme_textview_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+
+    		<ImageView
+        		android:id="@+id/activity_programme_image"
+        		android:layout_width="match_parent"
+        		android:layout_height="wrap_content"
+        		android:layout_marginLeft="10dp"
+        		android:layout_marginTop="10dp"
+        		android:layout_marginRight="10dp"/>
+
+            <TextView
+                    android:id="@+id/activity_programme_textview_subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+    		<TextView
+        		android:id="@+id/activity_programme_textview_description"
+        		android:layout_width="match_parent"
+        		android:layout_height="wrap_content"
+        		android:layout_marginLeft="10dp"
+        		android:layout_marginTop="10dp"
+        		android:layout_marginRight="10dp"
+        		android:text=""
+        		android:textColor="#000000"
+        		android:textSize="26sp" />
+
+    		<TextView
+        		android:id="@+id/activity_programme_textview_iplayer_link"
+        		android:layout_width="match_parent"
+        		android:layout_height="wrap_content"
+        		android:layout_marginLeft="10dp"
+        		android:layout_marginTop="10dp"
+        		android:layout_marginRight="10dp"
+        		android:layout_marginBottom="10dp"
+        		android:text=""
+        		android:textColor="#000000"
+                android:textSize="12sp"
+        		android:singleLine="true"
+        		android:focusable="true"
+        		android:focusableInTouchMode="true"
+        		/>
+
+	    </LinearLayout>
+
+	</ScrollView>
+
+</RelativeLayout>

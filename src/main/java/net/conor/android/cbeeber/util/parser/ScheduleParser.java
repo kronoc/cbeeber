@@ -7,7 +7,7 @@ import org.simpleframework.xml.core.Persister;
 
 public class ScheduleParser {
 
-    public Schedule parse(String xml) {
+    public Schedule parse(final String xml) {
         Serializer serial = new Persister();
         try {
             return serial.read(Schedule.class, xml);

@@ -11,7 +11,7 @@ import java.net.URL;
  */
 public class ScheduleFetcher {
 
-    public String fetch(String feedUrl) {
+    public String fetch(final String feedUrl) {
         StringBuffer buffer = new StringBuffer();
         try {
             URL url = new URL(feedUrl);
