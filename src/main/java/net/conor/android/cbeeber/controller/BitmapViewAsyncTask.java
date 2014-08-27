@@ -6,7 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.widget.ImageView;
 import net.conor.android.cbeeber.R;
-import net.conor.android.cbeeber.parser.ImageFetcher;
+import net.conor.android.cbeeber.util.fetcher.ImageFetcher;
 
 public class BitmapViewAsyncTask extends AsyncTask<Void, Void, Void>
 {

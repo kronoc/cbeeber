@@ -16,7 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 import net.conor.android.cbeeber.R;
 import net.conor.android.cbeeber.controller.RetrieveScheduleAsyncTask;
-import net.conor.android.cbeeber.location.LocationFinder;
+import net.conor.android.cbeeber.util.location.LocationFinder;
 
 /**
  * Created by keegac01 on 02/07/2014.

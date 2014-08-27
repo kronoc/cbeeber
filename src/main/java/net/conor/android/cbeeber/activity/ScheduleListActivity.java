@@ -4,14 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
 import net.conor.android.cbeeber.R;
-import net.conor.android.cbeeber.controller.ListViewBaseAdapter;
+import net.conor.android.cbeeber.controller.ScheduleViewBaseAdapter;
 import net.conor.android.cbeeber.model.Constants;
 import net.conor.android.cbeeber.model.Schedule;
 
 /**
  * Created by keegac01 on 02/07/2014.
  */
-public class CoreActivity extends Activity {
+public class ScheduleListActivity extends Activity {
 
 
     @Override
@@ -30,9 +30,9 @@ public class CoreActivity extends Activity {
             descriptionTextView.setPadding(10, 10, 10, 10);
 
 */
-            ListViewBaseAdapter listViewBaseAdapter = new ListViewBaseAdapter(this,schedule);
+            ScheduleViewBaseAdapter scheduleViewBaseAdapter = new ScheduleViewBaseAdapter(this,schedule);
             ListView listView = (ListView) this.findViewById(R.id.activity_main_listview);
-            listView.setAdapter(listViewBaseAdapter);
+            listView.setAdapter(scheduleViewBaseAdapter);
 
 
 

@@ -1,6 +1,7 @@
-package net.conor.android.cbeeber.parser;
+package net.conor.android.cbeeber.util.parser;
 
 import net.conor.android.cbeeber.model.Schedule;
+import net.conor.android.cbeeber.util.fetcher.ScheduleFetcher;
 
 /**
  * Created by keegac01 on 21/08/2014.

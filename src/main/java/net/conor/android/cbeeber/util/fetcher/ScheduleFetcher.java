@@ -1,4 +1,4 @@
-package net.conor.android.cbeeber.parser;
+package net.conor.android.cbeeber.util.fetcher;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

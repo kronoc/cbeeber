@@ -1,4 +1,4 @@
-package net.conor.android.cbeeber.parser;
+package net.conor.android.cbeeber.util.parser;
 
 import net.conor.android.cbeeber.model.Schedule;
 import org.simpleframework.xml.Serializer;

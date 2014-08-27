@@ -1,4 +1,4 @@
-package net.conor.android.cbeeber.location;
+package net.conor.android.cbeeber.util.location;
 
 import android.location.Address;
 import android.location.Geocoder;

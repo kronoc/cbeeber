@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import net.conor.android.cbeeber.activity.CoreActivity;
+import net.conor.android.cbeeber.activity.ScheduleListActivity;
 import net.conor.android.cbeeber.model.Constants;
 import net.conor.android.cbeeber.model.Schedule;
-import net.conor.android.cbeeber.parser.ScheduleProvider;
+import net.conor.android.cbeeber.util.parser.ScheduleProvider;
 
 /**
 * Created by keegac01 on 02/07/2014.
@@ -40,7 +40,7 @@ public class RetrieveScheduleAsyncTask extends AsyncTask<String, Void, Schedule>
     @Override
     protected void onPostExecute(Schedule schedule)
     {
-        Intent intent = new Intent(callingActivity, CoreActivity.class);
+        Intent intent = new Intent(callingActivity, ScheduleListActivity.class);
         intent.putExtra(Constants.SCHEDULE, schedule);
         callingActivity.startActivity(intent);
         callingActivity.finish();

@@ -11,12 +11,12 @@ import android.widget.TextView;
 import net.conor.android.cbeeber.R;
 import net.conor.android.cbeeber.model.Schedule;
 
-public class ListViewBaseAdapter extends BaseAdapter
+public class ScheduleViewBaseAdapter extends BaseAdapter
 {
     private final Schedule schedule;
     private Context context;
 	
-	public ListViewBaseAdapter(Context context,Schedule schedule)
+	public ScheduleViewBaseAdapter(Context context, Schedule schedule)
 	{
 		this.context = context;
 		this.schedule = schedule;
