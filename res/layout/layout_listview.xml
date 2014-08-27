@@ -32,16 +32,6 @@
 
     <ImageView android:id="@+id/activity_main_imageview"
                android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:background="@drawable/cbeebies_channel"
-               android:contentDescription="cbeebies channel" />
-
-    <TextView android:id="@+id/activity_main_textview_description"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_toRightOf="@id/activity_main_imageview"
-              android:gravity="right"
-              android:text="Today's CBeebies Programmes" />
-
+               android:layout_height="wrap_content"/>
 
 </RelativeLayout>

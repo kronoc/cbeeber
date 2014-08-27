@@ -31,7 +31,6 @@ public class ImageFetcher {
                     image = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(inputStream), width, height, false);
                 }
             }
-
         }
         }catch (Exception e){
             throw new RuntimeException(e);

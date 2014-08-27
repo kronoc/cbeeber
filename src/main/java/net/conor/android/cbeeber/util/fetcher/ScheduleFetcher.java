@@ -33,10 +33,8 @@ public class ScheduleFetcher {
             inputStream.close();
             httpURLConnection.disconnect();
         } catch (Exception e){
-//            Log.e("cbeeber", "Exception", e);
                 throw new RuntimeException(e);
         }
         return buffer.toString();
-
     }
 }

@@ -25,19 +25,9 @@ public class ScheduleListActivity extends Activity {
 
         if (this.getIntent().hasExtra(Constants.SCHEDULE)) {
             Schedule schedule = (Schedule)this.getIntent().getSerializableExtra(Constants.SCHEDULE);
-  /*
-            TextView descriptionTextView = (TextView)this.findViewById(R.id.activity_main_textview_description);
-            if (descriptionTextView == null){
-                System.out.println("descriptionTextView is null");
-            }
-            descriptionTextView.setPadding(10, 10, 10, 10);
-
-*/
             ScheduleViewBaseAdapter scheduleViewBaseAdapter = new ScheduleViewBaseAdapter(this,schedule);
             ListView listView = (ListView) this.findViewById(R.id.activity_main_listview);
             listView.setAdapter(scheduleViewBaseAdapter);
-
-
 
         }
         else{
@@ -56,12 +46,12 @@ public class ScheduleListActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.main_menu_about:
-                InfoBox.showInfo(this,"About");
+                InfoBox.showInfo(this,"CBeeber - The CBeebies Schedule App - © 2014 Conor Keegan");
                 break;
             case R.id.main_menu_reload:
+                InfoBox.showInfo(this,"Reloading today's schedule");
                 RetrieveScheduleAsyncTask retrieveAsync = new RetrieveScheduleAsyncTask(this);
                 retrieveAsync.execute();
-                InfoBox.showInfo(this,"Reloading today's schedule");
                 break;
             case R.id.main_menu_favourites:
                 InfoBox.showInfo(this,"favourite programmes");

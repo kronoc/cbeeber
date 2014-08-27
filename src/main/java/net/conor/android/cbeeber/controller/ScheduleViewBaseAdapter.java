@@ -67,16 +67,16 @@ public class ScheduleViewBaseAdapter extends BaseAdapter
 //		}
 		
 		ImageView imageView = (ImageView)convertView.findViewById(R.id.layout_listview_imageview);
-		imageView.setLayoutParams(new RelativeLayout.LayoutParams(192, 108));
+		imageView.setLayoutParams(new RelativeLayout.LayoutParams(240, 135));
 
-		BitmapViewAsyncTask bitmapViewAsyncTask = new BitmapViewAsyncTask(this.context, this.schedule.getBroadcasts().get(position).getImageUrl(), imageView, 192, 108);
+		BitmapViewAsyncTask bitmapViewAsyncTask = new BitmapViewAsyncTask(this.context, this.schedule.getBroadcasts().get(position).getImageUrl(), imageView, 240, 135);
 		bitmapViewAsyncTask.execute();
 		
 		TextView textViewTop = (TextView)convertView.findViewById(R.id.layout_listview_textview_top);
 		textViewTop.setText(this.schedule.getBroadcasts().get(position).getTitle());
 		
 		TextView textViewBottom = (TextView)convertView.findViewById(R.id.layout_listview_textview_bottom);
-		textViewBottom.setText(this.schedule.getBroadcasts().get(position).getStart().toString());
+		textViewBottom.setText(this.schedule.getBroadcasts().get(position).getPrettyTime());
 		
 		return convertView;
 	}

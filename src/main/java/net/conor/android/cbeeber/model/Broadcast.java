@@ -15,6 +15,7 @@ public class Broadcast implements Serializable
 	private static final long serialVersionUID = 1l;
 
     private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+    private static final DateFormat timeFormat = new SimpleDateFormat("h:mm a");
 
     @Element
     private String pid;
@@ -43,6 +44,9 @@ public class Broadcast implements Serializable
     public Date getStart() {
         return parse(start);
     }
+
+    public String getPrettyTime(){ return timeFormat.format(parse(start));}
+
 
     private Date parse(String date) {
         try {
@@ -79,7 +83,7 @@ public class Broadcast implements Serializable
     public String getTitle() {
         String parentTitle = tleo().getTitle();
         if (!parentTitle.equals(programme.getTitle())){
-            return parentTitle+":"+programme.getTitle();
+            return parentTitle+" : "+programme.getTitle();
         }else{
             return programme.getTitle();
         }
