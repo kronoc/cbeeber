@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 import net.conor.android.cbeeber.R;
+import net.conor.android.cbeeber.controller.RetrieveScheduleAsyncTask;
 import net.conor.android.cbeeber.controller.ScheduleViewBaseAdapter;
 import net.conor.android.cbeeber.model.Constants;
 import net.conor.android.cbeeber.model.Schedule;
@@ -55,16 +56,18 @@ public class ScheduleListActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.main_menu_about:
-                //loadSchedule("bbc1");
+                InfoBox.showInfo(this,"About");
                 break;
             case R.id.main_menu_reload:
-//                loadSchedule("bbc2");
+                RetrieveScheduleAsyncTask retrieveAsync = new RetrieveScheduleAsyncTask(this);
+                retrieveAsync.execute();
+                InfoBox.showInfo(this,"Reloading today's schedule");
                 break;
             case R.id.main_menu_favourites:
-//                loadSchedule("bbc3");
+                InfoBox.showInfo(this,"favourite programmes");
                 break;
             case R.id.main_menu_help:
-//                 loadSchedule("bbc4");
+                InfoBox.showInfo(this,"Help");
                 break;
         }
         return true;

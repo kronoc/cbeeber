@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 import net.conor.android.cbeeber.R;
 import net.conor.android.cbeeber.controller.RetrieveScheduleAsyncTask;
 import net.conor.android.cbeeber.util.location.LocationFinder;
@@ -65,11 +64,11 @@ public class WelcomeActivity extends Activity {
         }
         else
         {
-            showInfo("Good News, you have an internet connection");
+            InfoBox.showInfo(this,"Good News, you have an internet connection");
 
             LocationFinder locationFinder = new LocationFinder((LocationManager) this.getSystemService(Context.LOCATION_SERVICE), new Geocoder(this));
             if (locationFinder.isUK()){
-                showInfo("You are in the UK - CBeebies Channel is available in your country.");
+                InfoBox.showInfo(this,"You are in the UK - CBeebies Channel is available in your country.");
                 RetrieveScheduleAsyncTask retrieveAsync = new RetrieveScheduleAsyncTask(this);
                 retrieveAsync.execute();
             }else{
@@ -90,10 +89,6 @@ public class WelcomeActivity extends Activity {
         }
     }
 
-    private void showInfo(CharSequence text) {
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(this, text, duration);
-        toast.show();
-    }
+
 
 }
