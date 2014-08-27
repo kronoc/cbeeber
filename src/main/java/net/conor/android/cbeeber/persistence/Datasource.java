@@ -35,12 +35,10 @@ public class Datasource
     public long insert(Programme programme)
     {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_UID, "foo");
-//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_TITLE, broadcast.getTitle());
-//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_DESCRIPTION, broadcast.getDescription());
-//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_GUID, broadcast.getGuid());
-//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_PUBDATE, broadcast.getPubDate());
-//        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_THUMBNAIL, broadcast.getThumbnail());
+        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_PID, programme.getPid());
+        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_TITLE,programme.getDisplayTitle());
+        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_SUBTITLE, programme.getDisplaySubtitle());
+        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_IMAGE_PID, programme.getImagePid());
         return this.sqLiteDatabase.insert(ApplicationSQLiteOpenHelper.TABLE_NAME, null, contentValues);
     }
 
@@ -49,12 +47,10 @@ public class Datasource
         Cursor cursor = this.sqLiteDatabase.query(
                 ApplicationSQLiteOpenHelper.TABLE_NAME,
                 new String[] {
-                        ApplicationSQLiteOpenHelper.TABLE_COLUMN_UID,
+                        ApplicationSQLiteOpenHelper.TABLE_COLUMN_PID,
                         ApplicationSQLiteOpenHelper.TABLE_COLUMN_TITLE,
-                        ApplicationSQLiteOpenHelper.TABLE_COLUMN_DESCRIPTION,
-                        ApplicationSQLiteOpenHelper.TABLE_COLUMN_GUID,
-                        ApplicationSQLiteOpenHelper.TABLE_COLUMN_PUBDATE,
-                        ApplicationSQLiteOpenHelper.TABLE_COLUMN_THUMBNAIL
+                        ApplicationSQLiteOpenHelper.TABLE_COLUMN_SUBTITLE,
+                        ApplicationSQLiteOpenHelper.TABLE_COLUMN_IMAGE_PID
                 },
                 null,
                 null,
@@ -66,14 +62,12 @@ public class Datasource
         ArrayList<Programme> arrayList = new ArrayList<Programme>();
         while(!cursor.isAfterLast())
         {
-            Programme broadcast = new Programme();
-//            broadcast.setUid(cursor.getString(0));
-//            broadcast.setTitle(cursor.getString(1));
-//            broadcast.setDescription(cursor.getString(2));
-//            broadcast.setGuid(cursor.getString(3));
-//            broadcast.setPubDate(cursor.getString(4));
-//            broadcast.setThumbnail(cursor.getString(5));
-            arrayList.add(broadcast);
+            Programme programme = new Programme();
+            programme.setPid(cursor.getString(0));
+            programme.setDisplayTitle(cursor.getString(1));
+            programme.setDisplaySubtitle(cursor.getString(2));
+            programme.setImagePid(cursor.getString(3));
+          arrayList.add(programme);
             cursor.moveToNext();
         }
         return arrayList;
@@ -81,14 +75,12 @@ public class Datasource
 
     private class ApplicationSQLiteOpenHelper extends SQLiteOpenHelper
     {
-        private static final String TABLE_NAME = "broadcast";
+        private static final String TABLE_NAME = "favourites";
         private static final String TABLE_COLUMN_ID = "ID";
-        private static final String TABLE_COLUMN_UID = "UID";
+        private static final String TABLE_COLUMN_PID = "PID";
         private static final String TABLE_COLUMN_TITLE = "TITLE";
-        private static final String TABLE_COLUMN_DESCRIPTION = "DESCRIPTION";
-        private static final String TABLE_COLUMN_GUID = "GUID";
-        private static final String TABLE_COLUMN_PUBDATE = "PUBDATE";
-        private static final String TABLE_COLUMN_THUMBNAIL = "THUMBNAIL";
+        private static final String TABLE_COLUMN_SUBTITLE = "DESCRIPTION";
+        private static final String TABLE_COLUMN_IMAGE_PID = "IMAGE_PID";
 
         public ApplicationSQLiteOpenHelper(Context context, String name, CursorFactory cursorFactory, int version)
         {
@@ -101,12 +93,10 @@ public class Datasource
             sqLiteDatabase.execSQL(
                     "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ( " +
                             TABLE_COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                            TABLE_COLUMN_UID + " TEXT, " +
+                            TABLE_COLUMN_PID + " TEXT, " +
                             TABLE_COLUMN_TITLE + " TEXT, " +
-                            TABLE_COLUMN_DESCRIPTION + " TEXT, " +
-                            TABLE_COLUMN_GUID + " TEXT, " +
-                            TABLE_COLUMN_PUBDATE + " TEXT, " +
-                            TABLE_COLUMN_THUMBNAIL + " TEXT " +
+                            TABLE_COLUMN_SUBTITLE + " TEXT, " +
+                            TABLE_COLUMN_IMAGE_PID + " TEXT " +
                             ")"
             );
         }
