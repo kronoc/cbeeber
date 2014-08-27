@@ -37,7 +37,7 @@ public class WelcomeActivity extends Activity {
         progressBar.setLayoutParams(layoutParams);
 
         RelativeLayout relativeLayout = new RelativeLayout(this);
-        relativeLayout.setBackgroundResource(R.drawable.splash);
+        relativeLayout.setBackgroundResource(R.drawable.cbeebies);
         relativeLayout.addView(progressBar);
 
         this.setContentView(relativeLayout);

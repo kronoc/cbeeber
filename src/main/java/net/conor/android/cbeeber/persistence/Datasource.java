@@ -12,7 +12,6 @@ import net.conor.android.cbeeber.model.Programme;
 
 import java.util.ArrayList;
 
-//TODO table definition
 public class Datasource {
     private static final String DATABASE_NAME = "cbeeber";
     private static final int DATABASE_VERSION = 1;

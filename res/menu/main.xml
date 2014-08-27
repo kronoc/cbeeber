@@ -4,23 +4,25 @@
     <item
             android:id="@+id/main_menu_reload"
             android:title="@string/main_menu_reload_title"
-            android:icon="@android:drawable/ic_menu_today"
+            android:icon="@drawable/ic_menu_refresh"
             android:showAsAction="ifRoom"/>
 
     <item
             android:id="@+id/main_menu_favourites"
             android:title="@string/main_menu_favourites_title"
-            android:icon="@android:drawable/ic_menu_manage"
+            android:icon="@drawable/ic_menu_star"
             android:showAsAction="ifRoom"/>
 
     <item
             android:id="@+id/main_menu_help"
             android:title="@string/main_menu_help_title"
+            android:icon="@drawable/ic_menu_help"
             android:showAsAction="never"/>
 
     <item
             android:id="@+id/main_menu_about"
             android:title="@string/main_menu_about_title"
+            android:icon="@drawable/ic_menu_today"
             android:showAsAction="never"/>
 
 </menu>
