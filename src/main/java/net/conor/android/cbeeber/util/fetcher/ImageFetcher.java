@@ -24,7 +24,7 @@ public class ImageFetcher {
             httpURLConnection.setRequestMethod("GET");
             httpURLConnection.setDoInput(true);
             httpURLConnection.connect();
-            if(httpURLConnection.getResponseCode()<=302)
+            if(httpURLConnection.getResponseCode()<=400)
             {
                 InputStream inputStream = httpURLConnection.getInputStream();
                 if(inputStream!=null){
