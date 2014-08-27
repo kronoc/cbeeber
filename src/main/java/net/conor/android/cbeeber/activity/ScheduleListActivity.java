@@ -2,6 +2,8 @@ package net.conor.android.cbeeber.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 import net.conor.android.cbeeber.R;
 import net.conor.android.cbeeber.controller.ScheduleViewBaseAdapter;
@@ -43,30 +45,30 @@ public class ScheduleListActivity extends Activity {
 
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        this.getMenuInflater().inflate(R.menu.core, menu);
-//        return true;
-//    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem menuItem) {
-//        switch (menuItem.getItemId()) {
-//            case R.id.menu_item_bbc1:
-//                loadSchedule("bbc1");
-//                break;
-//            case R.id.menu_item_bbc2:
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.main_menu_about:
+                //loadSchedule("bbc1");
+                break;
+            case R.id.main_menu_reload:
 //                loadSchedule("bbc2");
-//                break;
-//            case R.id.menu_item_bbc3:
+                break;
+            case R.id.main_menu_favourites:
 //                loadSchedule("bbc3");
-//                break;
-//            case R.id.menu_item_bbc4:
+                break;
+            case R.id.main_menu_help:
 //                 loadSchedule("bbc4");
-//                break;
-//        }
-//        return true;
-//    }
+                break;
+        }
+        return true;
+    }
 
 
 

@@ -33,7 +33,7 @@ public class LocationFinder {
 
     }
 
-    public Location getLocation() {
+    protected Location getLocation() {
         try {
             if (!locationManager
                     .isProviderEnabled(LocationManager.GPS_PROVIDER) && !locationManager
