@@ -13,7 +13,6 @@ import net.conor.android.cbeeber.R;
 public class HelpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.help_view, container, false);
         return view;
     }
