@@ -24,7 +24,6 @@ public class ScheduleViewBaseAdapter extends BaseAdapter {
         this.schedule = schedule;
         this.datasource =  new CBeeberDatasource(context);
         this.favsOnly = favsOnly;
-
     }
 
     @Override
@@ -45,7 +44,6 @@ public class ScheduleViewBaseAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listview, null);
-
         RelativeLayout relativeLayout = (RelativeLayout) convertView.findViewById(R.id.layout_listview_relativelayout);
 
         boolean isFavourite = (datasource.find(this.schedule.getBroadcasts().get(position).getProgramme().tleo().getPid()) != null);
@@ -87,7 +85,6 @@ public class ScheduleViewBaseAdapter extends BaseAdapter {
         }else{
             bugImage.setVisibility(View.GONE);
         }
-
 
         if(favsOnly && !isFavourite) {
             bugImage.setVisibility(View.GONE);
