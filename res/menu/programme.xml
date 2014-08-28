@@ -20,6 +20,12 @@
             android:icon="@drawable/ic_menu_today"
             android:showAsAction="ifRoom|withText"/>
 
+    <item
+            android:id="@+id/programme_menu_help"
+            android:title="@string/main_menu_help_title"
+            android:icon="@drawable/ic_menu_help"
+            android:showAsAction="never"/>
+
 
 
 </menu>

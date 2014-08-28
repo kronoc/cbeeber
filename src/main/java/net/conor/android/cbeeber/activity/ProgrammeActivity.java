@@ -49,6 +49,9 @@ public class ProgrammeActivity extends Activity {
             case R.id.programme_menu_schedule:
                 this.finish();
                 break;
+            case R.id.programme_menu_help:
+                ProgrammeActivity.this.startActivity(new Intent(ProgrammeActivity.this,HelpActivity.class));
+                break;
         }
         return true;
     }

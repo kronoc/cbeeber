@@ -13,4 +13,7 @@
     <string name="schedule_favourite">*Favourite Programme*</string>
     <string name="programme_menu_schedule_title">Schedule</string>
     <string name="main_menu_favourites">Favourites</string>
+    <string name="help_heading">CBeeber Help</string>
+    <string name="help_content">Help Text</string>
+    <string name="help_menu_back">Back</string>
 </resources>

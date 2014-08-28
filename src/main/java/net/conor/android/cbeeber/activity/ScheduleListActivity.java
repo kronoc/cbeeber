@@ -90,7 +90,7 @@ public class ScheduleListActivity extends Activity {
                 retrieveAsync.execute();
                 break;
             case R.id.main_menu_help:
-                InfoBox.showInfo(this, "Help");
+                ScheduleListActivity.this.startActivity(new Intent(ScheduleListActivity.this,HelpActivity.class));
                 break;
             case R.id.main_menu_favourites:
                 if (menuItem.isChecked()){

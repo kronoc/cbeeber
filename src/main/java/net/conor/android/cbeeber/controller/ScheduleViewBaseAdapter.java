@@ -68,10 +68,10 @@ public class ScheduleViewBaseAdapter extends BaseAdapter {
         TextView textViewTop = (TextView) convertView.findViewById(R.id.layout_schedule_textview_programme_title);
         textViewTop.setText(this.schedule.getBroadcasts().get(position).getTitle());
 
-        ImageView bugImage = (ImageView) convertView.findViewById(R.id.layout_schedule_now);
-        bugImage.setBackgroundResource(R.drawable.dancing_bug);
-        bugAnimation = (AnimationDrawable) bugImage.getBackground();
+        TextView textViewBottom = (TextView) convertView.findViewById(R.id.layout_schedule_textview_programme_time);
+        textViewBottom.setText(this.schedule.getBroadcasts().get(position).getPrettyTime());
 
+        ImageView bugImage = (ImageView) convertView.findViewById(R.id.layout_schedule_now);
 
         Calendar now = Calendar.getInstance();
         Calendar broadcastStart = Calendar.getInstance();
@@ -79,26 +79,31 @@ public class ScheduleViewBaseAdapter extends BaseAdapter {
         Calendar broadcastEnd = Calendar.getInstance();
         broadcastEnd.setTime(this.schedule.getBroadcasts().get(position).getEnd());
 
-
         if(broadcastStart.before(now) && broadcastEnd.after(now)) {
+            bugImage.setBackgroundResource(R.drawable.dancing_bug);
+            bugAnimation = (AnimationDrawable) bugImage.getBackground();
             bugImage.setVisibility(View.VISIBLE);
             bugAnimation.start();
         }else{
             bugImage.setVisibility(View.GONE);
         }
 
-        TextView textViewBottom = (TextView) convertView.findViewById(R.id.layout_schedule_textview_programme_time);
-        textViewBottom.setText(this.schedule.getBroadcasts().get(position).getPrettyTime());
 
-        if(favsOnly && !isFavourite){
+        if(favsOnly && !isFavourite) {
             bugImage.setVisibility(View.GONE);
+            bugImage.setPadding(0, -1000, 0, -1000);
             imageView.setVisibility(View.GONE);
-            imageView.setPadding(0,0,0,0);
+            imageView.setPadding(0, -1000, 0, -1000);
             textViewTop.setVisibility(View.GONE);
+            textViewTop.setPadding(0, -1000, 0, -1000);
             textViewBottom.setVisibility(View.GONE);
+            textViewBottom.setPadding(0, -1000, 0, -1000);
             convertView.setVisibility(View.GONE);
+            convertView.setPadding(0, -1000, 0, -1000);
             relativeLayout.setVisibility(View.GONE);
+            relativeLayout.setPadding(0, -1000, 0, -1000);
         }
+
         return convertView;
     }
 
