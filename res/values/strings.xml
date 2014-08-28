@@ -2,11 +2,14 @@
 <resources>
     <string name="app_name">CBeeber</string>
     <string name="app_description">Today\'s CBeebies Shows</string>
+
     <string name="main_menu_reload_title">Reload</string>
     <string name="programme_menu_iplayer_title">Watch in iPlayer</string>
     <string name="programme_menu_favourites_title">Add/Remove Favourite</string>
     <string name="main_menu_help_title">Help</string>
+    <string name="help_menu_back">Back</string>
     <string name="main_menu_about_title">About</string>
+
     <string name="programme_detail">Programme Information</string>
     <string name="programme_iplayer">Go to iPlayer page</string>
     <string name="iplayer_cta">Click here to watch in CBeebies iPlayer:</string>
@@ -14,6 +17,9 @@
     <string name="programme_menu_schedule_title">Schedule</string>
     <string name="main_menu_favourites">Favourites</string>
     <string name="help_heading">CBeeber Help</string>
-    <string name="help_content">Help Text</string>
-    <string name="help_menu_back">Back</string>
+    <string name="help_content">
+        Welcome to CBeeber, a simple application designed to give you fast access to
+
+
+    </string>
 </resources>
