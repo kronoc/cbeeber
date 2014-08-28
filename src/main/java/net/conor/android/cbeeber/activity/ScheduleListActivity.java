@@ -106,7 +106,11 @@ public class ScheduleListActivity extends Activity {
         return true;
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        this.onCreate(null);
+    }
 
 
 }
