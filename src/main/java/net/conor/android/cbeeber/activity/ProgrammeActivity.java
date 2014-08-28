@@ -46,6 +46,9 @@ public class ProgrammeActivity extends Activity {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(programme.getIplayerLink()));
                 ProgrammeActivity.this.startActivity(intent);
                 break;
+            case R.id.programme_menu_schedule:
+                this.finish();
+                break;
         }
         return true;
     }

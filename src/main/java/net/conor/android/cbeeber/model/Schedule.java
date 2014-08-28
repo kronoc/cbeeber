@@ -6,6 +6,7 @@ import org.simpleframework.xml.Path;
 import org.simpleframework.xml.Root;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -61,5 +62,24 @@ public class Schedule implements Serializable {
 
     public int size() {
         return broadcasts.size();
+    }
+
+    public int currentBroadcastIndex(){
+
+        Calendar now = Calendar.getInstance();
+        Calendar broadcastStart = Calendar.getInstance();
+        Calendar broadcastEnd = Calendar.getInstance();
+        int i = 0;
+        for(Broadcast broadcast : broadcasts){
+            broadcastStart.setTime( broadcast.getStart());
+            broadcastEnd.setTime( broadcast.getEnd());
+            if(broadcastStart.before(now) && broadcastEnd.after(now)) {
+                break;
+            }
+            i++;
+        }
+        return i;
+
+
     }
 }

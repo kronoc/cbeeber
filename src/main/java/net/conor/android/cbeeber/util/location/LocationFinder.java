@@ -4,6 +4,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.util.Log;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,6 +24,11 @@ public class LocationFinder {
 
     public boolean isUK() {
         try {
+            try {
+                Thread.sleep(1 * 1000);
+            } catch (Exception exception) {
+                Log.e("cbeeber", "Exception", exception);
+            }
             Location location = getLocation();
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
             Address address = addresses.get(0);

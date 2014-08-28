@@ -10,4 +10,6 @@
     <string name="programme_detail">Programme Information</string>
     <string name="programme_iplayer">Go to iPlayer page</string>
     <string name="iplayer_cta">Click here to watch in CBeebies iPlayer:</string>
+    <string name="schedule_favourite">*Favourite Programme*</string>
+    <string name="programme_menu_schedule_title">Schedule</string>
 </resources>

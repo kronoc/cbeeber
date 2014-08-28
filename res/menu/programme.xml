@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+
     <item
             android:id="@+id/programme_menu_iplayer"
             android:title="@string/programme_menu_iplayer_title"
@@ -12,6 +13,12 @@
             android:title="@string/programme_menu_favourites_title"
             android:icon="@drawable/ic_menu_star"
             android:showAsAction="always|withText"/>
+
+    <item
+            android:id="@+id/programme_menu_schedule"
+            android:title="@string/programme_menu_schedule_title"
+            android:icon="@drawable/ic_menu_today"
+            android:showAsAction="ifRoom|withText"/>
 
 
 

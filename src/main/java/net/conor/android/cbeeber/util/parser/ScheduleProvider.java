@@ -9,20 +9,23 @@ import net.conor.android.cbeeber.util.fetcher.ScheduleFetcher;
  */
 public class ScheduleProvider {
 
-    private static final String SCHEDULE_URL = "http://www.bbc.co.uk/cbeebies/programmes/schedules.xml";
+    private static final String SCHEDULE_URL = "http://open.live.bbc.co.uk/aps/cbeebies/programmes/schedules.xml";
+    public static final String FALLBACK_SCHEDULES_XML = "schedules.xml";
     private ScheduleFetcher fetcher = new ScheduleFetcher();
     private ScheduleParser parser = new ScheduleParser();
+    private Schedule schedule;
 
     public Schedule getSchedule() {
-        String scheduleXML;
         try {
-            scheduleXML = fetcher.fetch(SCHEDULE_URL);
-        } catch (RuntimeException e) {
-            DummyScheduleFetcher dummyScheduleFetcher = new DummyScheduleFetcher();
-            scheduleXML = dummyScheduleFetcher.fetch("schedules.xml");
+            String scheduleXML = fetcher.fetch(SCHEDULE_URL);
+            schedule = parser.parse(scheduleXML);
+        }catch(RuntimeException e) {
+            if (schedule==null){
+                DummyScheduleFetcher dummyScheduleFetcher = new DummyScheduleFetcher();
+                return parser.parse(dummyScheduleFetcher.fetch(FALLBACK_SCHEDULES_XML));
+            }
         }
-
-        return parser.parse(scheduleXML);
+        return schedule;
     }
 
 }

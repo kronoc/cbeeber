@@ -14,9 +14,7 @@ import net.conor.android.cbeeber.util.parser.ScheduleProvider;
  */
 public class RetrieveScheduleAsyncTask extends AsyncTask<String, Void, Schedule> {
 
-
     private Activity callingActivity;
-
     public RetrieveScheduleAsyncTask(Activity callingActivity) {
         this.callingActivity = callingActivity;
     }
@@ -25,7 +23,7 @@ public class RetrieveScheduleAsyncTask extends AsyncTask<String, Void, Schedule>
     protected Schedule doInBackground(String... params) {
         ScheduleProvider scheduleProvider = new ScheduleProvider();
         try {
-            Thread.sleep(1 * 1000);
+            Thread.sleep(3 * 1000);
         } catch (Exception exception) {
             Log.e("cbeeber", "Exception", exception);
         }

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,15 +16,11 @@ import net.conor.android.cbeeber.controller.RetrieveScheduleAsyncTask;
 import net.conor.android.cbeeber.controller.ScheduleViewBaseAdapter;
 import net.conor.android.cbeeber.model.Constants;
 import net.conor.android.cbeeber.model.Schedule;
-import net.conor.android.cbeeber.persistence.CBeeberDatasource;
-
-import javax.sql.DataSource;
 
 /**
  * Created by keegac01 on 02/07/2014.
  */
 public class ScheduleListActivity extends Activity {
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +31,9 @@ public class ScheduleListActivity extends Activity {
             final Schedule schedule = (Schedule) this.getIntent().getSerializableExtra(Constants.SCHEDULE);
             ScheduleViewBaseAdapter scheduleViewBaseAdapter = new ScheduleViewBaseAdapter(this, schedule);
             ListView listView = (ListView) this.findViewById(R.id.activity_main_listview);
+            Log.i("CBeeber", "Current Broadcast Index:"+schedule.currentBroadcastIndex());
             listView.setAdapter(scheduleViewBaseAdapter);
+            listView.setSelection(schedule.currentBroadcastIndex());
             listView.setOnItemClickListener(
                     new AdapterView.OnItemClickListener()
                     {
@@ -47,6 +46,8 @@ public class ScheduleListActivity extends Activity {
                         }
                     }
             );
+
+
 
         } else {
             new AlertDialog
@@ -86,6 +87,8 @@ public class ScheduleListActivity extends Activity {
         }
         return true;
     }
+
+
 
 
 }

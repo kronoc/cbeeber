@@ -2,6 +2,7 @@ package net.conor.android.cbeeber.util.fetcher;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -26,12 +27,16 @@ public class ImageFetcher {
                 if (httpURLConnection.getResponseCode() <= 400) {
                     InputStream inputStream = httpURLConnection.getInputStream();
                     if (inputStream != null) {
-                        image = Bitmap.createScaledBitmap(BitmapFactory.decodeStream(inputStream), width, height, false);
+                        Bitmap fetchedBitmap = BitmapFactory.decodeStream(inputStream);
+                        if (fetchedBitmap != null) {
+                            image = Bitmap.createScaledBitmap(fetchedBitmap, width, height, false);
+                        }
                     }
                 }
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            Log.e("cbeeber", "Exception getting image imageURL", e);
+            return fallbackImage;
         }
 
         return image;
