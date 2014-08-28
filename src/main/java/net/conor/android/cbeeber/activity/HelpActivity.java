@@ -1,10 +1,10 @@
 package net.conor.android.cbeeber.activity;
 
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
 import net.conor.android.cbeeber.R;
 import net.conor.android.cbeeber.view.HelpFragment;
 
@@ -20,9 +20,12 @@ public class HelpActivity extends Activity {
         super.onCreate(savedInstanceState);
         this.helpFragment = new HelpFragment();
 
+        RelativeLayout relativeLayout = new RelativeLayout(this);
+        this.setContentView(relativeLayout);
+
         this.getFragmentManager()
                 .beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+               // .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                 .replace(R.id.activity_help, this.helpFragment)
                 .commit();
     }

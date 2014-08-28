@@ -52,9 +52,6 @@ public class ScheduleListActivity extends Activity {
                         }
                     }
             );
-
-
-
         } else {
             new AlertDialog
                     .Builder(this, AlertDialog.THEME_HOLO_LIGHT)
@@ -94,7 +91,7 @@ public class ScheduleListActivity extends Activity {
                 break;
             case R.id.main_menu_favourites:
                 if (menuItem.isChecked()){
-                    menuItem.setIcon(R.drawable.ic_menu_fav_unchecked);
+                    menuItem.setIcon(R.drawable.ic_menu_star);
                     menuItem.setChecked(false);
                     favsOnly=false;
                 }

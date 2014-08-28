@@ -62,15 +62,15 @@ public class WelcomeActivity extends Activity {
             InfoBox.showInfo(this, "Good News, you have an internet connection");
 
             LocationFinder locationFinder = new LocationFinder((LocationManager) this.getSystemService(Context.LOCATION_SERVICE), new Geocoder(this));
-            if (locationFinder.isUK()) {
-                InfoBox.showInfo(this, "You are in the UK - CBeebies Channel is available in your country.");
+            if (locationFinder.isAllowedTerritory(this)) {
+                InfoBox.showInfo(this, "You are a supported territory - CBeeber App is available to use in your country.");
                 RetrieveScheduleAsyncTask retrieveAsync = new RetrieveScheduleAsyncTask(this);
                 retrieveAsync.execute();
             } else {
                 new AlertDialog
                         .Builder(this, AlertDialog.THEME_HOLO_LIGHT)
                         .setTitle("Wrong Country")
-                        .setMessage("Sorry, this app can only be used in the UK due to content rights restrictions.")
+                        .setMessage("Sorry, this app can only be used in some territories due to content rights restrictions.")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {

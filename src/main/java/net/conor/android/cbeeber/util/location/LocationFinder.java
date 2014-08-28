@@ -1,5 +1,6 @@
 package net.conor.android.cbeeber.util.location;
 
+import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -13,6 +14,7 @@ import java.util.List;
  * Created by keegac01 on 27/08/2014.
  */
 public class LocationFinder {
+    public static final String[] ACCEPTABLE_COUNTRIES = {"GB","US","IE"};
 
     private final Geocoder geocoder;
     private LocationManager locationManager;
@@ -22,7 +24,7 @@ public class LocationFinder {
         this.geocoder = geocoder;
     }
 
-    public boolean isUK() {
+    public boolean isAllowedTerritory(Context context) {
         try {
             try {
                 Thread.sleep(1 * 1000);
@@ -30,15 +32,35 @@ public class LocationFinder {
                 Log.e("cbeeber", "Exception", exception);
             }
             Location location = getLocation();
-            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-            Address address = addresses.get(0);
-            return (address.getCountryCode().equalsIgnoreCase("gb"));
+            if (location != null){
+                List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                if (addresses.size()>0){
+                    Address address = addresses.get(0);
+                    return isAcceptableCountry(address.getCountryCode());
+                    //return (ACCEPTABLE_COUNTRY.equalsIgnoreCase(address.getCountryCode()));
+                }
+            }
+
         } catch (IOException e) {
             Log.e("CBeeber",e.getMessage());
-            //If time out checking location log message but allow usage of app
-            return true;
         }
 
+        //TODO there are cases where the location service times out, for now I am
+        //falling back to using the device's locale.
+        String country = context.getResources().getConfiguration().locale.getCountry();
+        Log.i("CBeeber","Using Locale Country"+country);
+
+        return isAcceptableCountry(country);
+
+    }
+
+    private boolean isAcceptableCountry(String country) {
+        for(String acceptable:ACCEPTABLE_COUNTRIES){
+            if (acceptable.equals(country)){
+                return true;
+            }
+        }
+        return false;
     }
 
     protected Location getLocation() {

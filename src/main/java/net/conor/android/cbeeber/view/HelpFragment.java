@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import net.conor.android.cbeeber.R;
 
 /**
@@ -19,12 +18,12 @@ public class HelpFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.help_fragment, container, false);
 
-        TextView helpHeadingText = (TextView) view.findViewById(R.id.activity_help_heading);
+        /*TextView helpHeadingText = (TextView) view.findViewById(R.id.activity_help_heading);
         helpHeadingText.setText(R.string.help_heading);
 
         TextView helpBodyText = (TextView) view.findViewById(R.id.activity_help_text);
         helpBodyText.setText(R.string.help_content);
-
+*/
         return view;
 
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,19 +26,37 @@ public class ProgrammeActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        this.getMenuInflater().inflate(R.menu.programme, menu);
+        MenuInflater menuInflater = this.getMenuInflater();
+        menuInflater.inflate(R.menu.programme, menu);
+        MenuItem favItem = menu.findItem(R.id.programme_menu_favourites);
+        if (isFavourite()) {
+            favItem.setIcon(R.drawable.ic_menu_fav_checked);
+            favItem.setTitle(R.string.programme_menu_favourite_remove);
+        } else {
+            favItem.setIcon(R.drawable.ic_menu_star);
+            favItem.setTitle(R.string.programme_menu_favourite_add);
+        }
+
         return true;
+    }
+
+    private boolean isFavourite() {
+        return applicationDataSource.find(this.programme.tleo().getPid()) != null;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.programme_menu_favourites:
-                if (applicationDataSource.find(this.programme.tleo().getPid()) != null) {
+                if (isFavourite()) {
                     applicationDataSource.delete(this.programme);
-                    InfoBox.showInfo(ProgrammeActivity.this, "Programme removed from favourites list");
+                    menuItem.setIcon(R.drawable.ic_menu_star);
+                    menuItem.setTitle(R.string.programme_menu_favourite_add);
+                    InfoBox.showInfo(ProgrammeActivity.this, "Programme removed from the favourite list");
                 } else {
                     applicationDataSource.insert(this.programme);
+                    menuItem.setIcon(R.drawable.ic_menu_fav_checked);
+                    menuItem.setTitle(R.string.programme_menu_favourite_remove);
                     InfoBox.showInfo(ProgrammeActivity.this, "Programme added to the favourite list");
                 }
                 break;
@@ -50,7 +69,7 @@ public class ProgrammeActivity extends Activity {
                 this.finish();
                 break;
             case R.id.programme_menu_help:
-                ProgrammeActivity.this.startActivity(new Intent(ProgrammeActivity.this,HelpActivity.class));
+                ProgrammeActivity.this.startActivity(new Intent(ProgrammeActivity.this, HelpActivity.class));
                 break;
         }
         return true;
