@@ -59,11 +59,11 @@ public class WelcomeActivity extends Activity {
                             }
                     ).show();
         } else {
-            InfoBox.showInfo(this, "Good News, you have an internet connection");
+            InfoBox.showInfo(this, "Good news, you have an internet connection");
 
             LocationFinder locationFinder = new LocationFinder((LocationManager) this.getSystemService(Context.LOCATION_SERVICE), new Geocoder(this));
             if (locationFinder.isAllowedTerritory(this)) {
-                InfoBox.showInfo(this, "You are a supported territory - CBeeber App is available to use in your country.");
+                InfoBox.showInfo(this, "Good news, You are in a supported territory - CBeeber App is available to use in your country.");
                 RetrieveScheduleAsyncTask retrieveAsync = new RetrieveScheduleAsyncTask(this);
                 retrieveAsync.execute();
             } else {

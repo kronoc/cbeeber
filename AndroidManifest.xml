@@ -33,6 +33,7 @@
                 android:screenOrientation="portrait" >
 
         </activity>
-        <activity android:name=".activity.HelpActivity"/>
+        <activity android:name=".activity.HelpActivity"
+                  android:label="@string/help_heading"/>
     </application>
 </manifest>

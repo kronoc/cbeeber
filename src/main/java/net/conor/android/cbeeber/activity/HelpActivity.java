@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
 import net.conor.android.cbeeber.R;
 import net.conor.android.cbeeber.view.HelpFragment;
 
@@ -18,16 +17,8 @@ public class HelpActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.helpFragment = new HelpFragment();
+        setContentView(R.layout.help);
 
-        RelativeLayout relativeLayout = new RelativeLayout(this);
-        this.setContentView(relativeLayout);
-
-        this.getFragmentManager()
-                .beginTransaction()
-               // .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .replace(R.id.activity_help, this.helpFragment)
-                .commit();
     }
 
     @Override
