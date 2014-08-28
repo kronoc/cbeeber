@@ -22,14 +22,20 @@ import net.conor.android.cbeeber.model.Schedule;
  */
 public class ScheduleListActivity extends Activity {
 
+
+    private boolean favsOnly = false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.core);
+        prepareList(favsOnly);
+    }
 
+    private void prepareList(boolean favsOnly) {
         if (this.getIntent().hasExtra(Constants.SCHEDULE)) {
             final Schedule schedule = (Schedule) this.getIntent().getSerializableExtra(Constants.SCHEDULE);
-            ScheduleViewBaseAdapter scheduleViewBaseAdapter = new ScheduleViewBaseAdapter(this, schedule);
+            ScheduleViewBaseAdapter scheduleViewBaseAdapter = new ScheduleViewBaseAdapter(this, schedule, favsOnly);
             ListView listView = (ListView) this.findViewById(R.id.activity_main_listview);
             Log.i("CBeeber", "Current Broadcast Index:"+schedule.currentBroadcastIndex());
             listView.setAdapter(scheduleViewBaseAdapter);
@@ -62,7 +68,9 @@ public class ScheduleListActivity extends Activity {
                             }
                     ).show();
         }
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -84,6 +92,19 @@ public class ScheduleListActivity extends Activity {
             case R.id.main_menu_help:
                 InfoBox.showInfo(this, "Help");
                 break;
+            case R.id.main_menu_favourites:
+                if (menuItem.isChecked()){
+                    menuItem.setIcon(R.drawable.ic_menu_fav_unchecked);
+                    menuItem.setChecked(false);
+                    favsOnly=false;
+                }
+                else{
+                    menuItem.setChecked(true);
+                    menuItem.setIcon(R.drawable.ic_menu_fav_checked);
+                    this.favsOnly= true;
+                }
+                this.prepareList(favsOnly);
+
         }
         return true;
     }

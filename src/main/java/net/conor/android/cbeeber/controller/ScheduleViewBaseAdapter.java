@@ -16,18 +16,14 @@ public class ScheduleViewBaseAdapter extends BaseAdapter {
     private final Schedule schedule;
     private final Context context;
     private final CBeeberDatasource datasource;
+    private final boolean favsOnly;
     private AnimationDrawable bugAnimation;
 
-//    public int getCurrentPosition() {
-//        return currentPosition;
-//    }
-//
-//    private int currentPosition = 0;
-
-    public ScheduleViewBaseAdapter(final Context context, final Schedule schedule) {
+    public ScheduleViewBaseAdapter(final Context context, final Schedule schedule, boolean favsOnly) {
         this.context = context;
         this.schedule = schedule;
         this.datasource =  new CBeeberDatasource(context);
+        this.favsOnly = favsOnly;
 
     }
 
@@ -51,6 +47,8 @@ public class ScheduleViewBaseAdapter extends BaseAdapter {
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_listview, null);
 
         RelativeLayout relativeLayout = (RelativeLayout) convertView.findViewById(R.id.layout_listview_relativelayout);
+
+        boolean isFavourite = (datasource.find(this.schedule.getBroadcasts().get(position).getProgramme().tleo().getPid()) != null);
 
         if (position == 0) {
             relativeLayout.setBackgroundResource(R.drawable.shape_listview_element_first);
@@ -81,18 +79,26 @@ public class ScheduleViewBaseAdapter extends BaseAdapter {
         Calendar broadcastEnd = Calendar.getInstance();
         broadcastEnd.setTime(this.schedule.getBroadcasts().get(position).getEnd());
 
-        //boolean isFavourite = (datasource.find(this.schedule.getBroadcasts().get(position).getProgramme().tleo().getPid()) != null);
 
         if(broadcastStart.before(now) && broadcastEnd.after(now)) {
-           // this.currentPosition = position;
             bugImage.setVisibility(View.VISIBLE);
             bugAnimation.start();
         }else{
-            bugImage.setVisibility(View.INVISIBLE);
+            bugImage.setVisibility(View.GONE);
         }
 
         TextView textViewBottom = (TextView) convertView.findViewById(R.id.layout_schedule_textview_programme_time);
         textViewBottom.setText(this.schedule.getBroadcasts().get(position).getPrettyTime());
+
+        if(favsOnly && !isFavourite){
+            bugImage.setVisibility(View.GONE);
+            imageView.setVisibility(View.GONE);
+            imageView.setPadding(0,0,0,0);
+            textViewTop.setVisibility(View.GONE);
+            textViewBottom.setVisibility(View.GONE);
+            convertView.setVisibility(View.GONE);
+            relativeLayout.setVisibility(View.GONE);
+        }
         return convertView;
     }
 

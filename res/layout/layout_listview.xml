@@ -4,7 +4,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
     <ImageView
             android:id="@+id/layout_schedule_imageview"
             android:layout_width="wrap_content"
@@ -33,22 +32,5 @@
             android:layout_below="@id/layout_schedule_textview_programme_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-    <!--
-    <TextView
-            android:id="@+id/layout_schedule_textview_programme_favourite"
-            android:layout_toRightOf="@id/layout_schedule_imageview"
-            android:layout_below="@id/layout_schedule_textview_programme_time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="@string/schedule_favourite"
-            android:textColor="#00FF00"/>
-
-    <ImageView
-            android:id="@+id/layout_schedule_favourite"
-            android:layout_toRightOf="@id/layout_schedule_textview_programme_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingRight="18dp"/>-->
-
+   
 </RelativeLayout>

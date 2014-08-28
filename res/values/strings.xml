@@ -12,4 +12,5 @@
     <string name="iplayer_cta">Click here to watch in CBeebies iPlayer:</string>
     <string name="schedule_favourite">*Favourite Programme*</string>
     <string name="programme_menu_schedule_title">Schedule</string>
+    <string name="main_menu_favourites">Favourites</string>
 </resources>

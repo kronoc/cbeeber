@@ -34,7 +34,9 @@ public class LocationFinder {
             Address address = addresses.get(0);
             return (address.getCountryCode().equalsIgnoreCase("gb"));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            Log.e("CBeeber",e.getMessage());
+            //If time out checking location log message but allow usage of app
+            return true;
         }
 
     }
