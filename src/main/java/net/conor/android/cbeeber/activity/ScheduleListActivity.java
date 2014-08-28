@@ -15,16 +15,21 @@ import net.conor.android.cbeeber.controller.RetrieveScheduleAsyncTask;
 import net.conor.android.cbeeber.controller.ScheduleViewBaseAdapter;
 import net.conor.android.cbeeber.model.Constants;
 import net.conor.android.cbeeber.model.Schedule;
+import net.conor.android.cbeeber.persistence.CBeeberDatasource;
+
+import javax.sql.DataSource;
 
 /**
  * Created by keegac01 on 02/07/2014.
  */
 public class ScheduleListActivity extends Activity {
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.core);
+
         if (this.getIntent().hasExtra(Constants.SCHEDULE)) {
             final Schedule schedule = (Schedule) this.getIntent().getSerializableExtra(Constants.SCHEDULE);
             ScheduleViewBaseAdapter scheduleViewBaseAdapter = new ScheduleViewBaseAdapter(this, schedule);
