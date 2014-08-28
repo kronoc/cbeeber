@@ -39,7 +39,9 @@ public class ScheduleListActivity extends Activity {
             ListView listView = (ListView) this.findViewById(R.id.activity_main_listview);
             Log.i("CBeeber", "Current Broadcast Index:"+schedule.currentBroadcastIndex());
             listView.setAdapter(scheduleViewBaseAdapter);
-            listView.setSelection(schedule.currentBroadcastIndex());
+            if(schedule.currentBroadcastIndex()!=0) {
+                listView.setSelection(schedule.currentBroadcastIndex());
+            }
             listView.setOnItemClickListener(
                     new AdapterView.OnItemClickListener()
                     {

@@ -70,15 +70,21 @@ public class Schedule implements Serializable {
         Calendar broadcastStart = Calendar.getInstance();
         Calendar broadcastEnd = Calendar.getInstance();
         int i = 0;
+        boolean match = false;
         for(Broadcast broadcast : broadcasts){
             broadcastStart.setTime( broadcast.getStart());
             broadcastEnd.setTime( broadcast.getEnd());
             if(broadcastStart.before(now) && broadcastEnd.after(now)) {
+                match=true;
                 break;
             }
             i++;
         }
-        return i;
+        if(match) {
+            return i;
+        }else{
+            return 0;
+        }
 
 
     }
