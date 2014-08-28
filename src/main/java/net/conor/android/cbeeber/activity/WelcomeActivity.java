@@ -24,8 +24,6 @@ public class WelcomeActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         DisplayMetrics displayMetrics = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
@@ -37,7 +35,11 @@ public class WelcomeActivity extends Activity {
         progressBar.setLayoutParams(layoutParams);
 
         RelativeLayout relativeLayout = new RelativeLayout(this);
-        relativeLayout.setBackgroundResource(R.drawable.cbeebies);
+        if (this.getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE){
+            relativeLayout.setBackgroundResource(R.drawable.cbeebies_landscape);
+        }else {
+            relativeLayout.setBackgroundResource(R.drawable.cbeebies);
+        }
         relativeLayout.addView(progressBar);
 
         this.setContentView(relativeLayout);
