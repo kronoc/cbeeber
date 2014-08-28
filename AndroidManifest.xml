@@ -30,7 +30,6 @@
         </activity>
         <activity
                 android:name=".activity.ProgrammeActivity"
-                android:label="@string/programme_detail"
                 android:screenOrientation="portrait" >
         </activity>
     </application>

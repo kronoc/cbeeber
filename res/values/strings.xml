@@ -3,7 +3,8 @@
     <string name="app_name">CBeeber</string>
     <string name="app_description">Today\'s CBeebies Shows</string>
     <string name="main_menu_reload_title">Reload</string>
-    <string name="main_menu_favourites_title">Favourites</string>
+    <string name="programme_menu_iplayer_title">Watch in iPlayer</string>
+    <string name="programme_menu_favourites_title">Add/Remove Favourite</string>
     <string name="main_menu_help_title">Help</string>
     <string name="main_menu_about_title">About</string>
     <string name="programme_detail">Programme Information</string>

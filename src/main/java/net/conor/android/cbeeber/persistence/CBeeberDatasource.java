@@ -26,9 +26,35 @@ public class CBeeberDatasource {
         }
     }
 
+    public Programme find(String pid) {
+        Cursor cursor = this.sqLiteDatabase.query(
+                ApplicationSQLiteOpenHelper.TABLE_NAME,
+                new String[]{
+                        ApplicationSQLiteOpenHelper.TABLE_COLUMN_PID,
+                        ApplicationSQLiteOpenHelper.TABLE_COLUMN_TITLE,
+                        ApplicationSQLiteOpenHelper.TABLE_COLUMN_IMAGE_PID
+                },
+                ApplicationSQLiteOpenHelper.TABLE_COLUMN_PID + "= ?",
+                new String[]{pid},
+                null,
+                null,
+                null
+        );
+        cursor.moveToFirst();
+        ArrayList<Programme> arrayList = new ArrayList<Programme>();
+        while (!cursor.isAfterLast()) {
+            Programme programme = new Programme();
+            programme.setPid(cursor.getString(0));
+            programme.setDisplayTitle(cursor.getString(1));
+            programme.setImagePid(cursor.getString(2));
+            return programme;
+        }
+        return null;
+    }
+
     public long insert(Programme programme) {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_PID, programme.getPid());
+        contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_PID, programme.tleo().getPid());
         contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_TITLE, programme.getTitle());
         contentValues.put(ApplicationSQLiteOpenHelper.TABLE_COLUMN_IMAGE_PID, programme.getImagePid());
         return this.sqLiteDatabase.insert(ApplicationSQLiteOpenHelper.TABLE_NAME, null, contentValues);
@@ -59,6 +85,13 @@ public class CBeeberDatasource {
             cursor.moveToNext();
         }
         return arrayList;
+    }
+
+    public void delete(Programme programme) {
+        this.sqLiteDatabase.delete(
+                ApplicationSQLiteOpenHelper.TABLE_NAME,
+                ApplicationSQLiteOpenHelper.TABLE_COLUMN_PID + "= ?",
+                new String[]{programme.tleo().getPid()});
     }
 
     private class ApplicationSQLiteOpenHelper extends SQLiteOpenHelper {

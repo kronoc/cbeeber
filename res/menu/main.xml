@@ -8,12 +8,6 @@
             android:showAsAction="ifRoom"/>
 
     <item
-            android:id="@+id/main_menu_favourites"
-            android:title="@string/main_menu_favourites_title"
-            android:icon="@drawable/ic_menu_star"
-            android:showAsAction="ifRoom"/>
-
-    <item
             android:id="@+id/main_menu_help"
             android:title="@string/main_menu_help_title"
             android:icon="@drawable/ic_menu_help"

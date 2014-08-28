@@ -75,9 +75,6 @@ public class ScheduleListActivity extends Activity {
                 RetrieveScheduleAsyncTask retrieveAsync = new RetrieveScheduleAsyncTask(this);
                 retrieveAsync.execute();
                 break;
-            case R.id.main_menu_favourites:
-                InfoBox.showInfo(this, "favourite programmes");
-                break;
             case R.id.main_menu_help:
                 InfoBox.showInfo(this, "Help");
                 break;
