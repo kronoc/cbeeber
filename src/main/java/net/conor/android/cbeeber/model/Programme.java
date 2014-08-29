@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Root(strict = false)
 public class Programme implements Serializable {
 
-    private static final String PLACEHOLDER_IMAGE_URL = "http://ichef.bbci.co.uk/images/ic/192x108/?????.jpg";
+    protected static final String PLACEHOLDER_IMAGE_URL = "http://ichef.bbci.co.uk/images/ic/192x108/?????.jpg";
     private static final String IMAGE_TEMPLATE = "http://ichef.bbci.co.uk/images/ic/192x108/%s.jpg";
 
     @Element(required = false, name = "programme")

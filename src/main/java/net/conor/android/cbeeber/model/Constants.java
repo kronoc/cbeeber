@@ -6,5 +6,5 @@ package net.conor.android.cbeeber.model;
 public class Constants {
     public static final String SCHEDULE = "TV_SCHEDULE";
 
-    public static final String PROGRAMME_ITEM = "PROGRAMME";
+    public static final String PROGRAMME_ITEM = "net.conor.android.cbeeber.model.Programme";
 }

@@ -65,18 +65,19 @@ public class WelcomeActivity extends Activity {
 
             LocationFinder locationFinder = new LocationFinder((LocationManager) this.getSystemService(Context.LOCATION_SERVICE), new Geocoder(this));
             if (locationFinder.isAllowedTerritory(this)) {
-                InfoBox.showInfo(this, "Good news, You are in a supported territory - CBeeber App is available to use in your country.");
+                InfoBox.showInfo(this, "Good news, You are in a supported territory - CBeeber App is fully available to use in your country.");
                 RetrieveScheduleAsyncTask retrieveAsync = new RetrieveScheduleAsyncTask(this);
                 retrieveAsync.execute();
             } else {
                 new AlertDialog
                         .Builder(this, AlertDialog.THEME_HOLO_LIGHT)
                         .setTitle("Wrong Country")
-                        .setMessage("Sorry, this app can only be used in some territories due to content rights restrictions.")
+                        .setMessage("Due to rights restrictions in your territory you may not benefit from the full app experience.")
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                        WelcomeActivity.this.finish();
+                                        RetrieveScheduleAsyncTask retrieveAsync = new RetrieveScheduleAsyncTask(WelcomeActivity.this);
+                                        retrieveAsync.execute();
                                     }
                                 }
                         ).show();

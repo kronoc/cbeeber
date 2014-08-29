@@ -5,10 +5,14 @@ import android.graphics.drawable.AnimationDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import net.conor.android.cbeeber.R;
 import net.conor.android.cbeeber.model.Schedule;
 import net.conor.android.cbeeber.persistence.CBeeberDatasource;
+import net.conor.android.cbeeber.util.ImageCache;
 
 import java.util.Calendar;
 
@@ -17,13 +21,16 @@ public class ScheduleViewBaseAdapter extends BaseAdapter {
     private final Context context;
     private final CBeeberDatasource datasource;
     private final boolean favsOnly;
+    private final ImageCache imageCache;
     private AnimationDrawable bugAnimation;
 
-    public ScheduleViewBaseAdapter(final Context context, final Schedule schedule, boolean favsOnly) {
+
+    public ScheduleViewBaseAdapter(final Context context, final Schedule schedule, boolean favsOnly, ImageCache imageCache) {
         this.context = context;
         this.schedule = schedule;
         this.datasource =  new CBeeberDatasource(context);
         this.favsOnly = favsOnly;
+        this.imageCache = imageCache;
     }
 
     @Override
@@ -60,7 +67,7 @@ public class ScheduleViewBaseAdapter extends BaseAdapter {
         ImageView imageView = (ImageView) convertView.findViewById(R.id.layout_schedule_imageview);
         imageView.setLayoutParams(new RelativeLayout.LayoutParams(340, 195));
 
-        BitmapViewAsyncTask bitmapViewAsyncTask = new BitmapViewAsyncTask(this.context, this.schedule.getBroadcasts().get(position).getImageUrl(), imageView, 340, 195);
+        BitmapViewAsyncTask bitmapViewAsyncTask = new BitmapViewAsyncTask(this.context, this.imageCache, this.schedule.getBroadcasts().get(position).getImageUrl(), imageView, 340, 195);
         bitmapViewAsyncTask.execute();
 
         TextView textViewTop = (TextView) convertView.findViewById(R.id.layout_schedule_textview_programme_title);

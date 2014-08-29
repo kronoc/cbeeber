@@ -32,7 +32,12 @@ public class Broadcast implements Serializable {
     }
 
     public String getImageUrl() {
-        return tleo().getImageUrl();
+        String brandImage = tleo().getImageUrl();
+        if (Programme.PLACEHOLDER_IMAGE_URL.equals(brandImage)) {
+            return getProgramme().getImageUrl();
+        } else {
+            return brandImage;
+        }
     }
 
     public String getPid() {

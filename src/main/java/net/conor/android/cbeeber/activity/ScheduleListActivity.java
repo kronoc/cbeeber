@@ -16,6 +16,7 @@ import net.conor.android.cbeeber.controller.RetrieveScheduleAsyncTask;
 import net.conor.android.cbeeber.controller.ScheduleViewBaseAdapter;
 import net.conor.android.cbeeber.model.Constants;
 import net.conor.android.cbeeber.model.Schedule;
+import net.conor.android.cbeeber.util.ImageCache;
 
 /**
  * Created by keegac01 on 02/07/2014.
@@ -24,10 +25,16 @@ public class ScheduleListActivity extends Activity {
 
 
     private boolean favsOnly = false;
+    private ScheduleViewBaseAdapter scheduleViewBaseAdapter;
+
+
+    private ImageCache imageCache;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        imageCache = new ImageCache();
         setContentView(R.layout.core);
         prepareList(favsOnly);
     }
@@ -35,7 +42,7 @@ public class ScheduleListActivity extends Activity {
     private void prepareList(boolean favsOnly) {
         if (this.getIntent().hasExtra(Constants.SCHEDULE)) {
             final Schedule schedule = (Schedule) this.getIntent().getSerializableExtra(Constants.SCHEDULE);
-            ScheduleViewBaseAdapter scheduleViewBaseAdapter = new ScheduleViewBaseAdapter(this, schedule, favsOnly);
+            this.scheduleViewBaseAdapter = new ScheduleViewBaseAdapter(this, schedule, favsOnly, imageCache);
             ListView listView = (ListView) this.findViewById(R.id.activity_main_listview);
             Log.i("CBeeber", "Current Broadcast Index:"+schedule.currentBroadcastIndex());
             listView.setAdapter(scheduleViewBaseAdapter);

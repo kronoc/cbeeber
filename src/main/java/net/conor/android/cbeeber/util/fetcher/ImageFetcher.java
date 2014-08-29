@@ -3,6 +3,7 @@ package net.conor.android.cbeeber.util.fetcher;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
+import net.conor.android.cbeeber.util.ImageCache;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -13,7 +14,7 @@ import java.net.URL;
  */
 public class ImageFetcher {
 
-    public Bitmap fetchImage(final String imageURL, final Bitmap fallbackImage, final int width, final int height) {
+    public Bitmap fetchImage(ImageCache imageCache, final String imageURL, final Bitmap fallbackImage, final int width, final int height) {
         Bitmap image = fallbackImage;
         try {
             if (imageURL != null && imageURL.length() > 1) {
@@ -30,6 +31,7 @@ public class ImageFetcher {
                         Bitmap fetchedBitmap = BitmapFactory.decodeStream(inputStream);
                         if (fetchedBitmap != null) {
                             image = Bitmap.createScaledBitmap(fetchedBitmap, width, height, false);
+                            imageCache.put(imageURL, image);
                         }
                     }
                 }
