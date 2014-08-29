@@ -11,9 +11,10 @@ import java.io.Serializable;
 public class ImageCache implements Serializable{
 
     private LruCache<String, Bitmap> imageMemCache;
+    private static final int CACHE_SIZE = (((int) (Runtime.getRuntime().maxMemory() / 1024)) / 8);
 
     public ImageCache() {
-        imageMemCache = new InternalImageCache(((int) (Runtime.getRuntime().maxMemory() / 1024)) / 8) {
+        imageMemCache = new InternalImageCache(CACHE_SIZE) {
             @Override
             protected int sizeOf(String url, Bitmap bitmap) {
                 return bitmap.getByteCount() / 1024;
@@ -31,12 +32,6 @@ public class ImageCache implements Serializable{
 
 
     protected class InternalImageCache extends LruCache<String, Bitmap> implements Serializable{
-
-        /**
-         * @param maxSize for caches that do not override {@link #sizeOf}, this is
-         *                the maximum number of entries in the cache. For all other caches,
-         *                this is the maximum sum of the sizes of the entries in this cache.
-         */
         public InternalImageCache(int maxSize) {
             super(maxSize);
         }
