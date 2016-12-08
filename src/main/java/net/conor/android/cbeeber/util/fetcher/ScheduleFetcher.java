@@ -10,7 +10,7 @@ import java.net.URL;
  * Created by keegac01 on 20/08/2014.
  */
 public class ScheduleFetcher {
-    private static final String USER_AGENT="conor.keegan@bbc.co.uk CBeeber/1.0 (Android) ";
+    private static final String USER_AGENT="info@kronoc.com CBeeber/1.0 (Android) ";
 
     public String fetch(final String feedUrl) {
         StringBuffer buffer = new StringBuffer();
